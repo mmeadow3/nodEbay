@@ -2,7 +2,7 @@
   "name": "nodEbay",
   "version": "1.0.0",
   "description": "A websocket nodeJS bidding app for NSS MEAN stack Capstone",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
