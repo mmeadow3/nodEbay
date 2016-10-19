@@ -1,5 +1,5 @@
 'use strict';
 
-app.controller('navCtrl', function($scope) {
-    
-})
+// app.controller('navCtrl', function($scope) {
+//
+// })

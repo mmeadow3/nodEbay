@@ -4,9 +4,9 @@ const app = angular
 	.module('nodeBay', ['ngRoute'])
 	.config(($routeProvider, $locationProvider) => {
 		$routeProvider
-			.when('/', {
-				controller: 'navCtrl',
-				templateUrl: 'partials/navbar.html'
+			.when('/auction', {
+				controller: 'AuctionCtrl',
+				templateUrl: 'partials/auction.html'
 			})
 			.otherwise('/')
 
@@ -17,5 +17,3 @@ const app = angular
 				requireBase: false
 			});
 	})
-
-console.log("this is working");
