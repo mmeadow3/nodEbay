@@ -12,8 +12,10 @@ app.set('port', port)
 
 ////////middlewares///////////
 ////////////these are serving files to the client side////////////
-app.use(express.static('client'))
+app.use(express.static('../client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
+
+
 app.use((req, res) => {
   res.sendFile(path.join(__dirname + '/client/index.html').replace("server/", ""))
 });
