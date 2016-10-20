@@ -1,5 +1,10 @@
 'use strict';
 
-// app.controller('navCtrl', function($scope) {
-//
-// })
+app.controller('NavCtrl', function($scope) {
+    $scope.nav = "nav"
+
+  $scope.items = [
+      {name: "Current Auction", url: "/auction"},
+      {name: "My Page", url: "/userPage"}
+  ];
+})

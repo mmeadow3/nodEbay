@@ -8,6 +8,14 @@ const app = angular
 				controller: 'AuctionCtrl',
 				templateUrl: 'partials/auction.html'
 			})
+			.when('/userPage', {
+				controller: 'UserPage',
+				templateUrl: 'partials/userPage.html'
+			})
+      .when('/', {
+        controller: 'NavCtrl',
+        templateUrl: 'partials/navbar.html'
+       })
 			.otherwise('/')
 
 
