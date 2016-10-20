@@ -3,9 +3,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {red} = require('chalk');
-const app = express();
 const path = require("path");
-const {connect} = require("./db/database")
+const routes = require('./routes');
+const {connect} = require("./db/database");
+const app = express();
 
 const port = process.env.PORT || 3000
 app.set('port', port)
@@ -15,6 +16,7 @@ app.set('port', port)
 app.use(express.static('../client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
 
+app.use(routes)
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname + '/client/index.html').replace("server/", ""))
