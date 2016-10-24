@@ -12,29 +12,29 @@ const Item = require('../models/Item')
 router.get('/api/items', (req, res, err) =>
   Item
     .find()
-    .then(item => res.json({ item }))
+    .then(item => res.json({ item })) /////just putting item into object
     .catch(err)
 )
 
 
  router.post("/api/items", (req, res, err) => {
-   const item = req.params
+  //  const item = req.params
    Item
-   .create(item)
-   .then((item) => res.json(item))
+   .create(req.body)
+   .then((items) => res.json(items))
    .catch(err);
   });
 
 
 
 
-  router.get('/api/:username', (req, res, err) => {
-    const Username = req.params.username
-    User
-    .findOne({ username: Username })
-    .then(user => res.json(user))
-    .catch(err)
-  })
+  // router.get('/api/:username', (req, res, err) => {
+  //   const Username = req.params.username
+  //   User
+  //   .findOne({ username: Username })
+  //   .then(user => res.json(user))
+  //   .catch(err)
+  // })
 
 
 module.exports = router
