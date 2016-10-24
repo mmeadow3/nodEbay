@@ -16,6 +16,9 @@ app.set('port', port)
 app.use(express.static('../client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
 
+app.use(bodyParser.json())
+
+
 app.use(routes)
 
 app.use((req, res) => {
