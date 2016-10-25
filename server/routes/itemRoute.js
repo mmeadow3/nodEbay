@@ -27,12 +27,12 @@ router.get('/api/items/:_id', (req, res, err) =>
    .catch(err);
   });
 
-// router.put('/api/items/:_id', (req, res, err) => {
-// 	Item
-// 	.update({ _id:req.params.id }, {$set: { name: "lalallalalala" }})
-// 	.then(items => res.json(items))
-// 	.catch(err)
-// })
+router.put('/api/items/:_id', (req, res, err) => {
+	Item
+	.findOneAndUpdate({ _id:req.params._id }, {$set: { name: "1234566" }})
+	.then((item) => res.json(item))
+	.catch(err)
+})
 
 
 module.exports = router
