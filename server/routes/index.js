@@ -18,7 +18,6 @@ router.get('/api/items', (req, res, err) =>
 
 
  router.post("/api/items", (req, res, err) => {
-  //  const item = req.params
    Item
    .create(req.body)
    .then((items) => res.json(items))
