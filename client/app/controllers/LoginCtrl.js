@@ -20,7 +20,7 @@ app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, Use
 		 .then(data => {
 			 	//If user exists sign them in
 			 	if (data.data.user) {
-					console.log(data);
+					console.log(data.data.user);  //////
 					$location.path('/');
 					//If login is a success, show full navbar
 				//If user does not exist

@@ -26,7 +26,9 @@ router.post('/login', ({ session, body: { username, password } }, res, err) => {
 				if (user) {
 					session.username = username
 					res.json({user: user.username})
-				} 
+				} else {
+					res.send({ msg: 'Password does not match' })
+				}
 			})
 			.catch(err)
 })
