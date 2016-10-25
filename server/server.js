@@ -9,6 +9,7 @@ const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
 const app = express();
+////////////may add passport here later for other forms of Auth////////////
 
 const port = process.env.PORT || 3000
 app.set('port', port)
