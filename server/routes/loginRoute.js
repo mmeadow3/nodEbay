@@ -23,14 +23,14 @@ router.post('/login', ({ session, body: { username, password } }, res, err) => {
 			}
 		})
 		.then((user) => {
-			if (user) {
-				session.username = username
-				res.json({user: user.username})
-			} else {
-				res.json({ msg: 'Password does not match' })
-			}
-		})
-		.catch(err)
+				if (user) {
+					session.username = username
+					res.json({user: user.username})
+				} else {
+					res.json({ msg: 'Password does not match' })
+				}
+			})
+			.catch(err)
 })
 
 

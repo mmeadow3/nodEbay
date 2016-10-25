@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', function($scope, $rootScope, $http, $location, $routeParams, UserFactory) {
+app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, UserFactory) {
 
 	//Message to show for failed login
 	$scope.failedLogin = true;

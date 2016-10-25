@@ -7,6 +7,15 @@ app.controller('RegisterCtrl', function($scope, $http, $location) {
 		$('select').material_select()
 	})
 
+	$scope.submitForm = function(isValid) {
+
+		// check to make sure the form is completely valid
+		if (isValid) {
+			alert('our form is amazing');
+		}
+
+	};
+
 	$scope.register = () => {
 	const user = {
 		username: $scope.username,
