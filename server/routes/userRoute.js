@@ -20,6 +20,13 @@ router.post('/api/users', (req, res, err) => {
 });
 
 
+router.get('/currentUser', (req, res, err) => {
+	User
+		.findOne({ username: req.session.username })
+		.then((user) => {
+			res.json(user)
+		})
+})
 
 ///////no need to update user info (yet)/////////////
 
