@@ -19,15 +19,6 @@ router.post('/api/users', (req, res, err) => {
 	.catch(err)
 });
 
-
-router.get('/currentUser', (req, res, err) => {
-	User
-		.findOne({ username: req.session.username })
-		.then((user) => {
-			res.json(user)
-		})
-})
-
 ///////no need to update user info (yet)/////////////
 
 ///////no need to delete user info (yet)/////////////
