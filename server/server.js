@@ -33,6 +33,10 @@ app.use(bodyParser.json());
 
 
 app.use(routes);
+//////////404 path/////////////////////
+app.use('/api', (req, res) => {
+  res.status(404).send({message: 'Not found'});
+});
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname + '/client/index.html').replace("server/", ""))

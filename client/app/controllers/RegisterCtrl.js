@@ -7,7 +7,7 @@ app.controller('RegisterCtrl', function($scope, $http, $location) {
 		$('select').material_select()
 	})
 
-	$scope.login = function() {
+	$scope.register = () => {
 	const user = {
 		username: $scope.username,
 		email: $scope.email,
