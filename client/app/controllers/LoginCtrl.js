@@ -8,8 +8,7 @@ app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, Use
 
 
 	/////////////////////////////////////////
-	//User login functionality
-	$scope.login = () => {
+	$scope.login = function() {
 
 		const user = {
 			username: $scope.username,
@@ -21,7 +20,11 @@ app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, Use
 		 .then(data => {
 			 	//If user exists sign them in
 			 	if (data.data.user) {
+					console.log(data);
 					$location.path('/');
+					//If login is a success, show full navbar
+				//If user does not exist
+				//Reset form and show error message
 				} else {
 					$scope.username = "";
 					$scope.password = "";
@@ -30,6 +33,7 @@ app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, Use
 		 })
 		.catch(console.error);
 	}
+	/////
 	/////////////////////////////////////////
 
 });
