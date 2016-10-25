@@ -3,6 +3,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {red} = require('chalk');
+const session = require('express-session')
+const RedisStore = require('connect-redis')(session)
 const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
@@ -16,6 +18,16 @@ app.set('port', port)
 app.use(express.static('../client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
 
+/////////redis connection//////////
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  store: new RedisStore({
+    url: process.env.REDIS_URL || 'redis://localhost:6379'
+  }),
+  secret: 'nodebaySecret'
+}))
+////////////////////////////////////////
 app.use(bodyParser.json());
 
 
