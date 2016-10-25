@@ -4,3 +4,22 @@ const { Router } = require('express')
 const bcrypt = require('bcrypt')
 const router = Router()
 const User = require('../models/User')
+
+router.get('/api/users', (req, res, err) => {
+	User
+	.find()
+	.then(users => res.json(users))
+	.catch(err)
+})
+
+router.post('/api/users', (req, res, err) => {
+	User
+	.create(req.body)
+	.then(users => res.json(users))
+	.catch(err)
+})
+
+
+
+
+module.exports = router
