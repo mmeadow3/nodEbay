@@ -12,6 +12,13 @@ router.get('/api/users', (req, res, err) => {
 	.catch(err)
 });
 
+router.post('/api/users', (req, res, err) => {
+	User
+	.create(req.body)
+	.then(users => res.json(users))
+	.catch(err)
+});
+
 ///////no need to update user info (yet)/////////////
 
 ///////no need to delete user info (yet)/////////////
