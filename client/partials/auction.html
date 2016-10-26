@@ -1,2 +1,14 @@
 <h1>{{title}}</h1>
 <h2>This is the auction page</h2>
+<!-- getting data from controller -->
+<h2>{{itemForBid.name}}:  ${{itemForBid.price}}</h2>
+
+
+<!-- image  -->
+<h1>Image will go here</h1>
+
+
+<!-- input items -->
+<input type="number" name="newValue" placeholder="enter new bid">
+<span id="currency-default">{{amount | currency}}</span><br>
+<input type="button" name="bid" value="Submit Bid">

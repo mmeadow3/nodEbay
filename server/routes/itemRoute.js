@@ -19,7 +19,6 @@ router.get('/api/items/:_id', (req, res, err) =>
     .catch(err)
 )
 
-
  router.post('/api/items', (req, res, err) => {
    Item
    .create(req.body)
