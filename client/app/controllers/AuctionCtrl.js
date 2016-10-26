@@ -4,7 +4,7 @@ app.controller("AuctionCtrl", function($scope, ItemFactory, AuctionFactory) {
 //////setting defualt amount for now///////
   $scope.amount = 1234.56;
 
-
+///////will randomly get an item from the database////////
   const getAllItems = () => {
     AuctionFactory.getItems()
     .then(item => {
@@ -15,6 +15,11 @@ app.controller("AuctionCtrl", function($scope, ItemFactory, AuctionFactory) {
     })
   }
   getAllItems();
+////////////////////////////////////
+  $scope.submitBid = (bid) => {
+    console.log(bid);
+}
+
 
 
 })
