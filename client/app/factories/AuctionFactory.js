@@ -16,5 +16,13 @@ app.factory('AuctionFactory', function($http, $q) {
         })
     })
   }
+
+
+
+
+
+
+
+
 return {getItems}
 })

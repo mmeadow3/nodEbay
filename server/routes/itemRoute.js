@@ -28,7 +28,7 @@ router.get('/api/items/:_id', (req, res, err) =>
 
 router.put('/api/items/:_id', (req, res, err) => {
 	Item
-	.findOneAndUpdate({ _id:req.params._id }, {$set: { name: "1234566" }})
+	.findOneAndUpdate({ _id:req.params._id }, {$set: { price: req.body.price }})
 	.then((item) => res.json(item))
 	.catch(err)
 })

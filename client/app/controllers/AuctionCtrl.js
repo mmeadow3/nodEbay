@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller("AuctionCtrl", function($scope, ItemFactory, AuctionFactory) {
+app.controller("AuctionCtrl", function($scope, $q, $http, ItemFactory, AuctionFactory) {
 //////setting defualt amount for now///////
   $scope.bidSubmitted = false;
   $scope.lowBid = false;
@@ -21,12 +21,39 @@ app.controller("AuctionCtrl", function($scope, ItemFactory, AuctionFactory) {
     if (bid > $scope.amount){
       $scope.amount = bid;
       $scope.bidSubmitted = true;
+      updatePrice(bid)
     } else {
       $scope.lowBid = true;
     }
     $scope.bid = "";
 
 }
+
+// ///////update the price of the item in database///////////
+// const updatePrice = (bid) => {
+//   return $q((resolve, reject) => {
+//     $http
+//       .put(`/api/items/${$scope.itemForBid._id}`, bid)
+//       .then(({data}) => {
+//         if (data) {
+//           console.log(bid);
+//           resolve(data)
+//         } else {
+//           reject(null);
+//         }
+//       })
+//   })
+// }
+///////update the price of the item in database///////////
+const updatePrice = (bid) => {
+    $http
+      .put(`/api/items/${$scope.itemForBid._id}`, {price: bid})
+      .then(() => {
+        AuctionFactory.getItems()
+      })
+      .catch(console.error)
+    }
+
 
 
 

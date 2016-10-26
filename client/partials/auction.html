@@ -1,6 +1,6 @@
 <h2>This is the auction page</h2>
 <!-- getting data from controller -->
-<h2>{{itemForBid.name}}:  ${{itemForBid.price}}</h2>
+<h2>{{itemForBid.name}}:  Starting Price: ${{itemForBid.price}}</h2>
 
 
 <!-- image  -->
@@ -9,7 +9,7 @@
 
 <!-- input items -->
 <input type="number" name="bid" placeholder="enter new bid" ng-model="bid">
-<span id="currency-default">{{amount | currency}}</span><br>
+<span id="currency-default">Current Price: {{amount | currency}}</span><br>
 <input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)">
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>
 <h2 ng-show="lowBid">Bid is under the selling price</h2>
