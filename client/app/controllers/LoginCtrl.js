@@ -22,13 +22,12 @@ app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, Use
 			 	if (data.data.user) {
 					console.log(data.data.user);  //////
 					$location.path('/');
-					//If login is a success, show full navbar
 				//If user does not exist
 				//Reset form and show error message
 				} else {
 					$scope.username = "";
 					$scope.password = "";
-					$scope.failedLogin = false;
+					$scope.failedLogin = false;  //////controls the html files
 				}
 		 })
 		.catch(console.error);

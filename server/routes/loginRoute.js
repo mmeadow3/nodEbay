@@ -14,7 +14,7 @@ router.post('/login', ({ session, body: { username, password } }, res, err) => {
 						if (err) {
 							reject(err)
 						} else {
-							resolve(user)
+							resolve(matches)
 						}
 					})
 				})
@@ -25,14 +25,13 @@ router.post('/login', ({ session, body: { username, password } }, res, err) => {
 		.then((user) => {
 				if (user) {
 					session.username = username
-					res.json({user: user.username})
+					res.json({user: username})
+					console.log("user", username);
 				} else {
 					res.send({ msg: 'Password does not match' })
 				}
 			})
 			.catch(err)
 })
-
-
 
 module.exports = router;
