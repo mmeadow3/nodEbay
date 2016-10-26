@@ -12,6 +12,10 @@ const app = angular
 			controller: 'LoginCtrl',
 			templateUrl: 'partials/login.html'
 		})
+		.when('/allItems', {
+			controller: 'AllItemsCtrl',
+			templateUrl: 'partials/allItems.html'
+		})
 		.when('/auction', {
 				controller: 'AuctionCtrl',
 				templateUrl: 'partials/auction.html'

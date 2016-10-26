@@ -1,7 +1,5 @@
 "use strict";
 
-'use strict';
-
 app.factory('UserFactory', function($http, $q) {
 
   /////////////////////////////////////////

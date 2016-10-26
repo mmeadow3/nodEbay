@@ -6,6 +6,7 @@ app.controller('NavCtrl', function($scope) {
       {name: "My Page", url: "/userPage"},
       {name: "Register", url: "/register"},
       {name: "Login", url: "/login"},
-      {name: "Logout", url: "/logout"}
+      {name: "Logout", url: "/logout"},
+      {name: "Items", url: "/allItems"}
   ];
 })

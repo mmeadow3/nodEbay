@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller('LogoutCtrl', function($scope, $http, $location, UserFactory) {
+app.controller('LogoutCtrl', function($scope, $location, UserFactory) {
 
   /////////////////////////////////////////
   // Logout functionality

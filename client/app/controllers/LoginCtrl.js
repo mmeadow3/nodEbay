@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, UserFactory) {
+app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory) {
 
 	//Message to show for failed login
 	$scope.failedLogin = true;
@@ -20,7 +20,7 @@ app.controller('LoginCtrl', function($scope, $http, $location, $routeParams, Use
 		 .then(data => {
 			 	//If user exists sign them in
 			 	if (data.data.user) {
-					console.log(data.data.user);  //////
+					console.log(data.data.user);
 					$location.path('/');
 				//If user does not exist
 				//Reset form and show error message
