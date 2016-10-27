@@ -5,6 +5,7 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
   $scope.bidSubmitted = false;
   $scope.lowBid = false;
   $scope.winner = false;
+
 ///////will randomly get an item from the database////////
   const getAllItems = () => {
     AuctionFactory.getItems()
@@ -24,7 +25,8 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
     })
   }
   getAllItems();
-////////////////////////////////////
+
+/////////////bidding logic ///////////////////////
   $scope.submitBid = (bid) => {
     if (bid > $scope.amount && bid < 500){
       $scope.amount = bid;
