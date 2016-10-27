@@ -21,7 +21,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			 	//If user exists sign them in
 			 	if (data.data.user) {
 					console.log(data.data.user);
-					$location.path('/');
+					$location.path('/userPage');
 				//If user does not exist
 				//Reset form and show error message
 				} else {

@@ -27,7 +27,7 @@ router.post('/api/users', (req, res, err) => {
 
 router.put('/api/users/:_id', (req, res, err) => {
 	User
-	.findOneAndUpdate({ _id:req.params._id }, {$push: { itemsWon: req.body.itemsWon}})
+	.findOneAndUpdate({ _id:req.params._id }, {$push: { itemsWon: (req.body.itemsWon)}})
 	.then((user) => res.json(user))
 	.catch(err)
 });

@@ -2,3 +2,6 @@
 <h4>Welcome back: {{user.username}}</h4>
 <h4>email: {{user.email}}</h4>
 <h4>Your items:</h4>
+<div ng-repeat="items in itemWon">
+  <h4>{{items.name}} ${{items.price}}</h4>
+</div>

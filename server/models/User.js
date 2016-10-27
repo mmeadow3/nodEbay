@@ -21,7 +21,11 @@ module.exports = mongoose.model('user', {
     required: true,
   },
   itemsWon: {
-    type: Array
+    name: {
+    type: String
+  }, price: {
+    type: Number
+  }
   },
   itemsBidding: {
     type: Array
