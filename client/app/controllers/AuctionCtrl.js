@@ -23,10 +23,11 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
       $scope.amount = bid;
       $scope.bidSubmitted = true;
       updatePrice(bid)
-    } else if (bid >= 500 ) {
+    } else if (bid >= 500 ) { //////setting a $500 max bid
         $scope.amount = bid;
         $scope.winner = true;
         updatePrice(bid)
+        // itemWon()
         //////logic to remove from db///////
     } else {
       $scope.lowBid = true;
@@ -40,6 +41,12 @@ const updatePrice = (bid) => {
       .put(`/api/items/${$scope.itemForBid._id}`, {price: bid})
       .catch(console.error)
 }
+///////make the item availabilty = false///////////
+// const itemWon = () => {
+//     $http
+//       .put(`/api/items/${$scope.itemForBid._id}`, {available: false})
+//       .catch(console.error)
+// }
 
 
 
