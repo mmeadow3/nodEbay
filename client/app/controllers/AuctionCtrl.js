@@ -9,6 +9,13 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
   const getAllItems = () => {
     AuctionFactory.getItems()
     .then(item => {
+      item.forEach(function(property) {
+        //////////will remove items set to "Not available"/////////
+          if (property.available === false) {
+            let notAvailable = (item.indexOf(property));
+            item.splice(notAvailable, 1)
+          }
+      })
       /////////making logic to generate random item///////////
         let itemLength = item.length
         let randomNum = Math.floor(Math.random() * (itemLength));
@@ -27,7 +34,6 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
         $scope.amount = bid;
         $scope.winner = true;
         updatePrice(bid)
-        // itemWon()
         //////logic to remove from db///////
     } else {
       $scope.lowBid = true;
@@ -41,14 +47,5 @@ const updatePrice = (bid) => {
       .put(`/api/items/${$scope.itemForBid._id}`, {price: bid})
       .catch(console.error)
 }
-///////make the item availabilty = false///////////
-// const itemWon = () => {
-//     $http
-//       .put(`/api/items/${$scope.itemForBid._id}`, {available: false})
-//       .catch(console.error)
-// }
-
-
-
 
 })
