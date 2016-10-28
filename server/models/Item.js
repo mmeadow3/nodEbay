@@ -8,10 +8,15 @@ module.exports = mongoose.model('item', {
     lowercase: true,
     index: { unique: true }
   },
-  price: {
+  startingPrice: {
     type: Number,
     required: true
   },
+  currentPrice: {
+    type: Number,
+    required: true
+  },
+  finalPrice: Number,
   available: {
     type: Boolean,
     default: true

@@ -11,6 +11,7 @@ app.controller("UserPage", function($scope, UserFactory) {
         user.itemsWon.forEach((item) => {
           itemWon.push(item);
           $scope.itemWon = itemWon;
+          console.log(itemWon);
       })
     })
   }

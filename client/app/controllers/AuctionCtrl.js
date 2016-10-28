@@ -8,24 +8,32 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
 
 ///////will randomly get an item from the database////////
 const itemForBid = [];
-  const getAllItems = () => {
+  const getAllItems = (bid) => {
     AuctionFactory.getItems()
     .then(item => {
+      console.log(item);
       item.forEach(function(property) {
         //////////will remove items set to "Not available"/////////
-          if (property.available === false) {
-            let notAvailable = (item.indexOf(property));
+        if (property.available === false) {
+          let notAvailable = (item.indexOf(property));
+          console.log(item.length);
+          console.log(notAvailable);
             item.splice(notAvailable, 1)
-          }
+          console.log("length", item.length);
+        }
       })
+
       /////////making logic to generate random item///////////
         let itemLength = item.length
         let randomNum = Math.floor(Math.random() * (itemLength));
         $scope.currentItem = (item[randomNum])
-        $scope.amount = item[randomNum].price
+        $scope.amount = item[randomNum].currentPrice
         ///////pushes this item to user in the DB//////
+        console.log(item[randomNum]);
+        ///////push the item data to the database
         itemForBid.push({
-          price: (item[randomNum].price),
+          startingPrice: (item[randomNum].startingPrice),
+          finalPrice: bid,
           name: (item[randomNum].name)
         })
         })
@@ -41,9 +49,9 @@ const itemForBid = [];
         $scope.amount = bid;
         $scope.winner = true;
         //////logic to remove from db///////
-        updatePrice(bid);
         //////////and then add to users items///////////
-        moveToWinner();
+        updatePrice(bid)
+        moveToWinner(bid);
     } else {
       $scope.lowBid = true;
     }
@@ -53,21 +61,25 @@ const itemForBid = [];
 ///////update the price of the item in database///////////
 const updatePrice = (bid) => {
     $http
-      .put(`/api/items/${$scope.currentItem._id}`, {price: bid})
+      .put(`/api/items/${$scope.currentItem._id}`, {currentPrice: bid})
       .catch(console.error)
 }
 ////////// logic to move won item to user page////////
-const moveToWinner = () => {
+let currentUser = [];
+const moveToWinner = (bid) => {
   UserFactory.getCurrentUser()
   .then(user => {
     $scope.user = user.username
     ///////get item._id for item being bid on////////
-      itemForBid.forEach((id) => {
+      itemForBid.forEach((nameAndPrice) => {
         $http
-          .put(`/api/users/${user._id}`, {itemsWon: id})
+          .put(`/api/users/${user._id}`, {itemsWon: nameAndPrice})
           .catch(console.error)
     })
-
+    // update the final price to see what the user paid
+    $http
+      .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, available: false})
+      .catch(console.error)
   })
-}
+} ////////need to break out username from this function
 })

@@ -2,7 +2,7 @@
 
 <!-- getting data from controller -->
 <h1>You are bidding as: {{user}}</h1>
-<h2>{{currentItem.name}}:  Starting Price: ${{currentItem.price}}</h2>
+<h2>{{currentItem.name}}:  Starting Price: ${{currentItem.startingPrice}}</h2>
 
 
 <!-- image  -->
@@ -11,8 +11,9 @@
 
 <!-- input items -->
 <input type="number" name="bid" placeholder="enter new bid" ng-model="bid">
-<span id="currency-default">Current Price: {{amount | currency}}</span><br>
+<span id="currency-default">Current Price: ${{amount}}</span><br>
 <input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)">
+<!-- show/hide routes -->
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>
 <h2 ng-show="lowBid">Bid is under the selling price</h2>
 <h2 ng-show="winner">You have reached the maximum bid amount, you have won</h2>
