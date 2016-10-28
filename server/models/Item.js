@@ -13,8 +13,7 @@ module.exports = mongoose.model('item', {
     required: true
   },
   currentPrice: {
-    type: Number,
-    required: true
+    type: Number
   },
   finalPrice: Number,
   available: {
