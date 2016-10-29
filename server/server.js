@@ -8,7 +8,11 @@ const RedisStore = require('connect-redis')(session)
 const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
+const { Server } = require('http')
+const socketio = require('socket.io');
 const app = express();
+const server = Server(app)
+const io = socketio(server);
 ////////////may add passport here later for other forms of Auth////////////
 
 const port = process.env.PORT || 3000

@@ -34,7 +34,7 @@ const itemForBid = [];
         ///////push the item data to the database
         itemForBid.push({
           startingPrice: (item[randomNum].startingPrice),
-          // startingPrice: (item[randomNum].currentPrice),
+          // finalPrice: (item[randomNum].finalPrice),
           name: (item[randomNum].name)
         })
         })
