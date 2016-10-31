@@ -1,6 +1,7 @@
 <h3>number of users online: {{number}}</h3>
 <h3>Time Remaining: {{time}}</h3>
 <h2>This is the auction page</h2>
+<h3>*Note: all items have a $500 maximum</h3>
 
 <!-- getting data from controller -->
 <h2>{{currentItem.name}}:  Starting Price: ${{currentItem.startingPrice}}</h2>
@@ -14,8 +15,10 @@
 <!-- input items -->
 <input type="number" name="bid" placeholder="enter new bid" ng-model="bid">
 <span id="currency-default">Current Price: ${{amount}}</span><br>
+{{currentBid}}
 <input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)">
 <!-- show/hide routes -->
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>
-<h2 ng-show="lowBid">Bid is under the selling price</h2>
+<h2 ng-show="lowBid">Bid must be more than current price</h2>
 <h2 ng-show="winner">You have reached the maximum bid amount, you have won</h2>
+<h2 ng-show="winnerTime">Time has ended on this item, you have won</h2>

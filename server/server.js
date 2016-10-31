@@ -94,8 +94,10 @@ connect()
  {
    userNumber: users
  });
- socket.emit('bid', {
-   bid: 0
+ //////getting data back from client ////////
+ socket.on('bid', (bidData) => {
+   socket.emit("bid", bidData)
+   console.log(bidData);
  })
 
  socket.on("disconnect", function() {
@@ -106,10 +108,8 @@ connect()
 
 
 //////time logic from Rob Dodson /////https://robdodson.me////////
-var countdown = 60;
-
-
-setInterval(function() {
-  countdown--;
-  io.emit('timer', { countdown: countdown });
-}, 1000);
+// var countdown = 30;
+//   setInterval(function() {
+//     countdown--;
+//     io.emit('timer', { countdown: countdown });
+//   }, 1000);

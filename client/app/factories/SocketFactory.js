@@ -6,7 +6,7 @@ app.factory('SocketFactory', function ($rootScope) {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
         var args = arguments;
-        ///////$scope.$apply is checking the status of the app 
+        ///////$scope.$apply is checking the status of the app
         $rootScope.$apply(function () {
           callback.apply(socket, args);
         });

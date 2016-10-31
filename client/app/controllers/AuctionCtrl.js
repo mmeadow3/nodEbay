@@ -5,6 +5,7 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
   $scope.bidSubmitted = false;
   $scope.lowBid = false;
   $scope.winner = false;
+  $scope.winnerTime = false;
 
 ///////will randomly get an item from the database////////
 const itemForBid = [];
@@ -46,8 +47,9 @@ const itemForBid = [];
       $scope.amount = bid;
       $scope.bidSubmitted = true;
       updatePrice(bid)
-      socketUpdate(bid)
-    } else if (bid >= 500 ) { //////setting a $500 max bid
+      sendData(bid)
+      getBidData(bid)
+    } else if (bid >= 500) { //////setting a $500 max bid
         $scope.amount = bid;
         $scope.winner = true;
         //////logic to remove from db///////
@@ -96,15 +98,25 @@ const moveToWinner = (bid) => {
 SocketFactory.on('user', function (data) {
   $scope.number = data.userNumber;
 });
+///////sending data back to server//////////
+const sendData = (bid) => {
+  SocketFactory.emit("bid", bid)
+}
 
-SocketFactory.on('bid', function (data) {
-  console.log(data);
-});
-SocketFactory.on('timer', function (data) {
+const getBidData = (bid) => {
+  SocketFactory.on("bid", (data) => {
+    $scope.currentBid = data
+  })
+}
+SocketFactory.on('timer', function (data, bid) {
   if (data.countdown > 0) {
     $scope.time = data.countdown;
-  } else {
-    $scope.time = "Item has ended"
-  }
-});
+      } else {
+        $scope.time = "Item has ended"
+        $scope.amount = bid;
+        $scope.winnerTime = true;
+        updatePrice(bid)
+        moveToWinner(bid);
+      }
+    });
 })
