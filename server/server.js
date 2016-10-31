@@ -23,8 +23,6 @@ app.set('port', port)
 ////////middlewares///////////
 ////////////these are serving files to the client side////////////
 
-///////////////////////////////////////
-
 
 app.use(express.static('client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
@@ -86,10 +84,29 @@ connect()
   })
   .catch(console.error)
 //////socket logic/////////////
-  io.on('connection', function(socket) {
-      console.log('Client connected.');
-// Disconnect listener
-      socket.on('disconnect', function() {
-          console.log('Client disconnected.');
-      });
-  });
+
+ let users = 0;
+ io.on('connection', function (socket) {
+   ///////on connection add a user
+   users++
+   socket.emit('connection',
+   {
+     id: socket.id,
+     userNumber: users
+   });
+ /////////recieving data back from the client/////////
+   socket.on('my other event', function (data) {
+   console.log(data.message);
+ })
+
+   io.emit("message",
+     {
+       id: socket.id,
+       userNumber: users
+     });
+ socket.on("disconnect", function() {
+   users--
+ })
+
+
+ });

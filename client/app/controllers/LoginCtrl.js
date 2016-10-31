@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory) {
+app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory, SocketFactory) {
 
 	//Message to show for failed login
 	$scope.failedLogin = true;
@@ -32,7 +32,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 		 })
 		.catch(console.error);
 	}
-	/////
-	/////////////////////////////////////////
+	////////////////////////////
+	SocketFactory.connect()
 
 });
