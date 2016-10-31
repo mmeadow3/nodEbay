@@ -75,7 +75,6 @@ app.use((
   }
 )
 //////////////////////////
-
 connect()
   .then(() => {
     server.listen(port, () =>
@@ -83,29 +82,39 @@ connect()
     )
   })
   .catch(console.error)
+
+
 //////socket logic/////////////
  let users = 0;
+
  io.on('connection', function (socket) {
    ///////on connection add a user
    users++
-   socket.emit('connection',
-   {
-     id: socket.id,
-     userNumber: users
-   });
- /////////recieving data back from the client/////////
-   socket.on('my other event', function (data) {
-   console.log(data.message);
+ socket.emit("user",
+ {
+   userNumber: users
+ });
+ socket.emit('bid', {
+   bid: 0
  })
 
-   io.emit("message",
-     {
-       id: socket.id,
-       userNumber: users
-     });
  socket.on("disconnect", function() {
    users--
  })
+});
 
 
- });
+
+//////time logic from Rob Dodson /////https://robdodson.me////////
+var countdown = 60;
+setInterval(function() {
+  countdown--;
+  io.sockets.emit('timer', { countdown: countdown });
+}, 1000);
+
+io.sockets.on('connection', function (socket) {
+  socket.on('reset', function (data) {
+    countdown = 1000;
+    io.sockets.emit('timer', { countdown: countdown });
+  });
+});

@@ -46,6 +46,7 @@ const itemForBid = [];
       $scope.amount = bid;
       $scope.bidSubmitted = true;
       updatePrice(bid)
+      socketUpdate(bid)
     } else if (bid >= 500 ) { //////setting a $500 max bid
         $scope.amount = bid;
         $scope.winner = true;
@@ -92,10 +93,14 @@ const moveToWinner = (bid) => {
 } ////////need to break out username from this function
 
 ////////////////////////////
-SocketFactory.on('message', function (data) {
+SocketFactory.on('user', function (data) {
 $scope.number = data.userNumber;
 });
 
-
-
+SocketFactory.on('bid', function (data) {
+console.log(data);
+});
+SocketFactory.on('timer', function (data) {
+$scope.time = data.countdown;
+});
 })
