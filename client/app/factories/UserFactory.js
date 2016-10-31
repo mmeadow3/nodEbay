@@ -1,7 +1,6 @@
 "use strict";
 
 app.factory('UserFactory', function($http, $q) {
-
   /////////////////////////////////////////
   //Save current user
   const getCurrentUser = () => {

@@ -13,6 +13,8 @@ const socketio = require('socket.io');
 const app = express();
 const server = Server(app)
 const io = socketio(server);
+
+
 ////////////may add passport here later for other forms of Auth////////////
 
 const port = process.env.PORT || 3000
@@ -20,7 +22,11 @@ app.set('port', port)
 
 ////////middlewares///////////
 ////////////these are serving files to the client side////////////
-app.use(express.static('../client'))
+
+///////////////////////////////////////
+
+
+app.use(express.static('client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
 
 /////////redis connection//////////
@@ -43,14 +49,8 @@ app.use('/api', (req, res) => {
 });
 
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname + '/client/index.html').replace("server/", ""))
+    res.sendFile(process.cwd() + '/client/index.html')
 });
-///////////////////////////////////////
-app.use((req, res, next) => {
-  console.log("Request made to:", req.url);  ////every request will make this fire
-  next() /////this will make the process continue
-})
-
 
 // Error handling middleware
 app.use((
@@ -78,11 +78,18 @@ app.use((
 )
 //////////////////////////
 
-
 connect()
   .then(() => {
-    app.listen(port, () =>
+    server.listen(port, () =>
       console.log(`Listening on port: ${port}`)
     )
   })
   .catch(console.error)
+//////socket logic/////////////
+  io.on('connection', function(socket) {
+      console.log('Client connected.');
+// Disconnect listener
+      socket.on('disconnect', function() {
+          console.log('Client disconnected.');
+      });
+  });
