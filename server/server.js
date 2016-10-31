@@ -84,7 +84,6 @@ connect()
   })
   .catch(console.error)
 //////socket logic/////////////
-
  let users = 0;
  io.on('connection', function (socket) {
    ///////on connection add a user

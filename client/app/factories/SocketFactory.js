@@ -1,26 +1,26 @@
 "use strict";
 
-app.factory('SocketFactory', function() {
-  const socket = io()
-
-
-const connect = () => {
-   socket.on("connection", function (data){
-    console.log(data.userNumber);
-  })
-}
-  ////////this is recieving data from the socket on the server
-  socket.on("message", function (data){
-    ////this is emmiting data back to the server
-    socket.emit('my other event', { my: 'data' });
-    //////////////////////////////////////////////
-    })
-
-
-
-
-
-
-
-return {connect}
-})
+app.factory('SocketFactory', function ($rootScope) {
+  var socket = io.connect();
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {
+        var args = arguments;
+        ///////$scope.$apply is checking the status of the app 
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      })
+    }
+  };
+});

@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactory, UserFactory) {
+app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactory, UserFactory, SocketFactory) {
 //////setting defualt amount for now///////
   $scope.bidSubmitted = false;
   $scope.lowBid = false;
@@ -90,6 +90,12 @@ const moveToWinner = (bid) => {
       .catch(console.error)
   })
 } ////////need to break out username from this function
+
+////////////////////////////
+SocketFactory.on('message', function (data) {
+$scope.number = data.userNumber;
+});
+
 
 
 })
