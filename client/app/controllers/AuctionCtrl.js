@@ -94,13 +94,17 @@ const moveToWinner = (bid) => {
 
 ////////////////////////////
 SocketFactory.on('user', function (data) {
-$scope.number = data.userNumber;
+  $scope.number = data.userNumber;
 });
 
 SocketFactory.on('bid', function (data) {
-console.log(data);
+  console.log(data);
 });
 SocketFactory.on('timer', function (data) {
-$scope.time = data.countdown;
+  if (data.countdown > 0) {
+    $scope.time = data.countdown;
+  } else {
+    $scope.time = "Item has ended"
+  }
 });
 })

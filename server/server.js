@@ -107,14 +107,9 @@ connect()
 
 //////time logic from Rob Dodson /////https://robdodson.me////////
 var countdown = 60;
+
+
 setInterval(function() {
   countdown--;
-  io.sockets.emit('timer', { countdown: countdown });
+  io.emit('timer', { countdown: countdown });
 }, 1000);
-
-io.sockets.on('connection', function (socket) {
-  socket.on('reset', function (data) {
-    countdown = 1000;
-    io.sockets.emit('timer', { countdown: countdown });
-  });
-});
