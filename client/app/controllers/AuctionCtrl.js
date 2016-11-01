@@ -9,32 +9,54 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
 
 ///////will randomly get an item from the database////////
 const itemForBid = [];
-  const getAllItems = (bid) => {
-    AuctionFactory.getItems()
-    .then(item => {
-      console.log(item);
-      item.forEach(function(property) {
-        //////////will remove items set to "Not available"/////////
-        if (property.available == false) {
-          let notAvailable = (item.indexOf(property));
-          console.log(notAvailable);
-          console.log(item.length);
-            item.splice(notAvailable, 1)
-          console.log("length", item.length);
-          } else {
-          itemForBid.push({
-            startingPrice: (item[0].startingPrice),
-            currentPrice: (item[0].currentPrice),
-            _id: (item[0]._id),
-            name: (item[0].name)
-          })
-          $scope.currentItem = itemForBid[0]
-          $scope.amount = itemForBid[0].currentPrice
-          console.log(itemForBid[0]);
-          }
+const indextoRemove = [];
+const getAllItems = (bid) => {
+  AuctionFactory.getItems()
+  .then(item => {
+    console.log(item);
+    item.forEach(function(property) {
+      //////////will remove items set to "Not available"/////////
+      if (property.available === true) {
+        itemForBid.push({
+          startingPrice: (property.startingPrice),
+          currentPrice: (property.currentPrice),
+          _id: (property._id),
+          available: (property.available),
+          name: (property.name)
         })
-      })
-    }
+        $scope.currentItem = itemForBid[0]
+        $scope.amount = itemForBid[0].currentPrice
+      }
+    })
+  })
+}
+
+  // const getAllItems = (bid) => {
+  //   AuctionFactory.getItems()
+  //   .then(item => {
+  //     console.log(item);
+  //     item.forEach(function(property) {
+  //       //////////will remove items set to "Not available"/////////
+  //       if (property.available == false) {
+  //         let notAvailable = (item.indexOf(property));
+  //         console.log(notAvailable);
+  //         console.log(item.length);
+  //           item.splice(notAvailable, 1)
+  //         console.log("length", item.length);
+  //         } else {
+  //         itemForBid.push({
+  //           startingPrice: (item[0].startingPrice),
+  //           currentPrice: (item[0].currentPrice),
+  //           _id: (item[0]._id),
+  //           name: (item[0].name)
+  //         })
+  //         $scope.currentItem = itemForBid[0]
+  //         $scope.amount = itemForBid[0].currentPrice
+  //         console.log(itemForBid[0]);
+  //         }
+  //       })
+  //     })
+  //   }
   getAllItems();
 /////////////bidding logic ///////////////////////
   $scope.submitBid = (bid) => {
