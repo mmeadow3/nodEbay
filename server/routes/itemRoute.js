@@ -4,6 +4,10 @@ const { Router } = require('express')
 const router = Router()
 const Item = require('../models/Item')
 
+///////////AWS images////////
+// const s3 = require("../s3_listbuckets")
+// s3.listObjects
+
 router.get('/api/items', (req, res, err) =>
   Item
     .find()

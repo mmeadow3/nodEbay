@@ -9,11 +9,9 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
 
 ///////will randomly get an item from the database////////
 const itemForBid = [];
-const indextoRemove = [];
 const getAllItems = (bid) => {
   AuctionFactory.getItems()
   .then(item => {
-    console.log(item);
     item.forEach(function(property) {
       //////////will remove items set to "Not available"/////////
       if (property.available === true) {
@@ -22,6 +20,7 @@ const getAllItems = (bid) => {
           currentPrice: (property.currentPrice),
           _id: (property._id),
           available: (property.available),
+          imgUrl: (property.imgUrl),
           name: (property.name)
         })
         $scope.currentItem = itemForBid[0]
@@ -30,44 +29,17 @@ const getAllItems = (bid) => {
     })
   })
 }
-
-  // const getAllItems = (bid) => {
-  //   AuctionFactory.getItems()
-  //   .then(item => {
-  //     console.log(item);
-  //     item.forEach(function(property) {
-  //       //////////will remove items set to "Not available"/////////
-  //       if (property.available == false) {
-  //         let notAvailable = (item.indexOf(property));
-  //         console.log(notAvailable);
-  //         console.log(item.length);
-  //           item.splice(notAvailable, 1)
-  //         console.log("length", item.length);
-  //         } else {
-  //         itemForBid.push({
-  //           startingPrice: (item[0].startingPrice),
-  //           currentPrice: (item[0].currentPrice),
-  //           _id: (item[0]._id),
-  //           name: (item[0].name)
-  //         })
-  //         $scope.currentItem = itemForBid[0]
-  //         $scope.amount = itemForBid[0].currentPrice
-  //         console.log(itemForBid[0]);
-  //         }
-  //       })
-  //     })
-  //   }
-  getAllItems();
+getAllItems();
 /////////////bidding logic ///////////////////////
   $scope.submitBid = (bid) => {
     if (bid > $scope.amount && bid < 500){
-      $scope.amount = bid;
+      // $scope.amount = bid;
       $scope.bidSubmitted = true;
       updatePrice(bid)
       sendData(bid)
       getBidData(bid)
     } else if (bid >= 500) { //////setting a $500 max bid
-        $scope.amount = bid;
+        // $scope.amount = bid;
         $scope.winner = true;
         //////logic to remove from db///////
         //////////and then add to users items///////////
@@ -107,7 +79,7 @@ const moveToWinner = (bid) => {
       .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, available: false})
       .catch(console.error)
   })
-} ////////need to break out username from this function
+}
 
 ////////////////////////////
 SocketFactory.on('user', function (data) {

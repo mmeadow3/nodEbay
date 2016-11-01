@@ -1,5 +1,7 @@
 <h3>number of users online: {{number}}</h3>
 <h3>Time Remaining: {{time}}</h3>
+<!-- image  -->
+<img src="{{currentItem.imgUrl}}" style="width: 500px; height: 500px">
 <h2>This is the auction page</h2>
 <h3>*Note: all items have a $500 maximum</h3>
 
@@ -8,14 +10,12 @@
 
 
 
-<!-- image  -->
-<h1>Image will go here</h1>
 
 
 <!-- input items -->
 <input type="number" name="bid" placeholder="enter new bid" ng-model="bid">
-<span id="currency-default">Current Price: ${{amount}}</span><br>
-{{currentBid.bid}}
+<h3 id="currency-default" ng-show="!bidSubmitted">Current Price: ${{amount}}</h3>
+<h3 ng-show="bidSubmitted">Current Price: ${{currentBid.bid}}</h3>
 <input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)">
 <!-- show/hide routes -->
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>

@@ -20,8 +20,8 @@ module.exports = mongoose.model('item', {
     type: Boolean,
     default: true
   },
-  img: {
+  imgUrl: {
     data: Buffer,
-    contentType: String
+    type: String
   }
 })

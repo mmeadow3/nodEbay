@@ -9,13 +9,15 @@ const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
 const fs = require('fs');
+const AWS = require('aws-sdk');
+const request = require('request');
 const { Server } = require('http');
 const socketio = require('socket.io');
 const app = express();
 const server = Server(app)
 const io = socketio(server);
 
-
+AWS.config.loadFromPath('server/config.json');
 ////////////may add passport here later for other forms of Auth////////////
 
 const port = process.env.PORT || 3000
@@ -75,8 +77,7 @@ app.use((
     console.error(err.stack)
   }
 )
-// image storage///
-var imgPath = '/path/to/some/img.png';
+
 //////////////////////////
 connect()
   .then(() => {
@@ -99,8 +100,7 @@ connect()
  });
  //////getting data back from client ////////
  socket.on('bid', (bidData) => {
-   socket.broadcast.emit("bid", {bid: bidData})
-   console.log(bidData);
+   io.emit("bid", {bid: bidData})
  })
 
  socket.on("disconnect", function() {

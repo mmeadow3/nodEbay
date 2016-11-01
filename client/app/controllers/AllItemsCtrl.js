@@ -7,9 +7,9 @@ app.controller("AllItemsCtrl", function($scope, ItemFactory) {
     .then(items => {
       items.forEach((item) => {
         if (item.available === true) {
-        $scope.itemsForSale.push({name: item.name, price: item.startingPrice, available: "For Sale"})
+        $scope.itemsForSale.push({name: item.name, price: item.startingPrice, imgUrl: item.imgUrl, available: "For Sale"})
       } else {
-        $scope.itemsForSale.push({name: item.name, price: item.startingPrice, available: "Sold"})
+        $scope.itemsForSale.push({name: item.name, price: item.startingPrice, imgUrl: item.imgUrl, available: "Sold"})
       }
       })
     })
