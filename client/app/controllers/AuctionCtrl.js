@@ -17,37 +17,24 @@ const itemForBid = [];
         //////////will remove items set to "Not available"/////////
         if (property.available == false) {
           let notAvailable = (item.indexOf(property));
+          console.log(notAvailable);
           console.log(item.length);
             item.splice(notAvailable, 1)
           console.log("length", item.length);
-          }
-        })
+          } else {
           itemForBid.push({
             startingPrice: (item[0].startingPrice),
             currentPrice: (item[0].currentPrice),
             _id: (item[0]._id),
-            // finalPrice: null,
             name: (item[0].name)
           })
           $scope.currentItem = itemForBid[0]
           $scope.amount = itemForBid[0].currentPrice
           console.log(itemForBid[0]);
-          })
-      /////////making logic to generate random item///////////
-        // let itemLength = item.length
-        // console.log(itemLength);
-        // let randomNum = Math.floor(Math.random() * (itemLength));
-        //   $scope.currentItem = (item[randomNum])
-        //   $scope.amount = item[randomNum].currentPrice
-        // ///////pushes this item to user in the DB//////
-        // console.log(item[randomNum]);
-        // ///////push the item data to the database
-        // itemForBid.push({
-        //   startingPrice: (item[randomNum].startingPrice),
-        //   // finalPrice: (item[randomNum].finalPrice),
-        //   name: (item[randomNum].name)
-        // })
-}
+          }
+        })
+      })
+    }
   getAllItems();
 /////////////bidding logic ///////////////////////
   $scope.submitBid = (bid) => {
@@ -69,7 +56,6 @@ const itemForBid = [];
       $scope.lowBid = true;
     }
     $scope.bid = "";
-
 }
 
 

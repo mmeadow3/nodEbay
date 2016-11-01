@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller('LogoutCtrl', function($scope, $location, UserFactory) {
+app.controller('LogoutCtrl', function($scope, $location, UserFactory, $rootScope) {
 
   /////////////////////////////////////////
   // Logout functionality
@@ -8,6 +8,7 @@ app.controller('LogoutCtrl', function($scope, $location, UserFactory) {
     UserFactory.logout();
     $location.path('/login');
     //When user logs out, hide some navbar links
+  $rootScope.hideUserNavLinks();
 	};
   /////////////////////////////////////////
 

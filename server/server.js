@@ -3,12 +3,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {red} = require('chalk');
-const session = require('express-session')
-const RedisStore = require('connect-redis')(session)
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
-const { Server } = require('http')
+const fs = require('fs');
+const { Server } = require('http');
 const socketio = require('socket.io');
 const app = express();
 const server = Server(app)
@@ -74,6 +75,8 @@ app.use((
     console.error(err.stack)
   }
 )
+// image storage///
+var imgPath = '/path/to/some/img.png';
 //////////////////////////
 connect()
   .then(() => {

@@ -28,7 +28,7 @@ const app = angular
 					controller: 'LogoutCtrl',
 					templateUrl: 'partials/logout.html'
 		})
-		.otherwise('/')
+		.otherwise('/register')
 
 
 			//Cleans up the url, does not use '!#' in url

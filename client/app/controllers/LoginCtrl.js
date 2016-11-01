@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory) {
+app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory, $rootScope) {
 
 	//Message to show for failed login
 	$scope.failedLogin = true;
@@ -14,7 +14,9 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			username: $scope.username,
 			password: $scope.password
 		}
-
+		///////change the ng-show and hide in nav bar///////
+	$rootScope.showUserNavLinks();
+		///////////////
 		//Call to server for user verification
 		UserFactory.login(user)
 		 .then(data => {

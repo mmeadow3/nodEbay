@@ -31,6 +31,7 @@
     "materialize": "^1.0.0",
     "materialize-css": "^0.97.7",
     "mongoose": "^4.6.0",
+    "node-base64-image": "^1.0.1",
     "npm": "^3.10.8",
     "socket.io": "^1.5.1"
   }

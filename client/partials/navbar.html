@@ -1,6 +1,11 @@
 <nav ng-controller="NavCtrl">
-  <ul ng-repeat="item in items">
-    <li><a href="{{item.url}}">{{item.name}}</a></li>
+  <ul>
+    <li><a href="/auction" ng-hide="UserSignedIn">Current Auction</a></li>
+    <li><a href="/userPage" ng-hide="UserSignedIn">User Page</a></li>
+    <li><a href="/allItems" ng-hide="UserSignedIn">All Items</a></li>
+    <li><a href="/logout" ng-hide="UserSignedIn">Logout</a></li>
+    <li><a href="/login" ng-hide="noUserSignedIn">Login</a></li>
+    <li><a href="/register" ng-hide="noUserSignedIn">Register</a></li>
   </ul>
   {{nav}}
 </nav>

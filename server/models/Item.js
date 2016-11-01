@@ -19,5 +19,9 @@ module.exports = mongoose.model('item', {
   available: {
     type: Boolean,
     default: true
+  },
+  img: {
+    data: Buffer,
+    contentType: String
   }
 })
