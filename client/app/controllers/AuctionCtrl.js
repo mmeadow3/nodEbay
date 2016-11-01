@@ -15,31 +15,39 @@ const itemForBid = [];
       console.log(item);
       item.forEach(function(property) {
         //////////will remove items set to "Not available"/////////
-        if (property.available === false) {
+        if (property.available == false) {
           let notAvailable = (item.indexOf(property));
           console.log(item.length);
-          // console.log(notAvailable);
             item.splice(notAvailable, 1)
           console.log("length", item.length);
-        }
-      })
-
+          }
+        })
+          itemForBid.push({
+            startingPrice: (item[0].startingPrice),
+            currentPrice: (item[0].currentPrice),
+            _id: (item[0]._id),
+            // finalPrice: null,
+            name: (item[0].name)
+          })
+          $scope.currentItem = itemForBid[0]
+          $scope.amount = itemForBid[0].currentPrice
+          console.log(itemForBid[0]);
+          })
       /////////making logic to generate random item///////////
-        let itemLength = item.length
-        console.log(itemLength);
-        let randomNum = Math.floor(Math.random() * (itemLength));
-          $scope.currentItem = (item[randomNum])
-          $scope.amount = item[randomNum].currentPrice
-        ///////pushes this item to user in the DB//////
-        console.log(item[randomNum]);
-        ///////push the item data to the database
-        itemForBid.push({
-          startingPrice: (item[randomNum].startingPrice),
-          // finalPrice: (item[randomNum].finalPrice),
-          name: (item[randomNum].name)
-        })
-        })
-  }
+        // let itemLength = item.length
+        // console.log(itemLength);
+        // let randomNum = Math.floor(Math.random() * (itemLength));
+        //   $scope.currentItem = (item[randomNum])
+        //   $scope.amount = item[randomNum].currentPrice
+        // ///////pushes this item to user in the DB//////
+        // console.log(item[randomNum]);
+        // ///////push the item data to the database
+        // itemForBid.push({
+        //   startingPrice: (item[randomNum].startingPrice),
+        //   // finalPrice: (item[randomNum].finalPrice),
+        //   name: (item[randomNum].name)
+        // })
+}
   getAllItems();
 /////////////bidding logic ///////////////////////
   $scope.submitBid = (bid) => {
@@ -54,8 +62,9 @@ const itemForBid = [];
         $scope.winner = true;
         //////logic to remove from db///////
         //////////and then add to users items///////////
-        updatePrice(bid)
         moveToWinner(bid);
+        updatePrice(bid)
+        console.log(itemForBid[0]);
     } else {
       $scope.lowBid = true;
     }
@@ -74,10 +83,8 @@ const updatePrice = (bid) => {
 let currentUser = [];
 const moveToWinner = (bid) => {
   //////////first assign the winning price to the item////////
-  itemForBid.push({
-    finalPrice: bid,
-  })
   ////////then get user from Factory///////////////
+  itemForBid[0].finalPrice = bid
   UserFactory.getCurrentUser()
   .then(user => {
     $scope.user = user.username

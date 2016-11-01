@@ -96,7 +96,7 @@ connect()
  });
  //////getting data back from client ////////
  socket.on('bid', (bidData) => {
-   socket.emit("bid", bidData)
+   socket.broadcast.emit("bid", {bid: bidData})
    console.log(bidData);
  })
 

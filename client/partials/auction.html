@@ -15,7 +15,7 @@
 <!-- input items -->
 <input type="number" name="bid" placeholder="enter new bid" ng-model="bid">
 <span id="currency-default">Current Price: ${{amount}}</span><br>
-{{currentBid}}
+{{currentBid.bid}}
 <input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)">
 <!-- show/hide routes -->
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>
