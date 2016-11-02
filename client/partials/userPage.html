@@ -2,7 +2,13 @@
 <h4>Welcome back: {{user.username}}</h4>
 <h4>email: {{user.email}}</h4>
 <h4>Your items:</h4>
-<div ng-repeat="items in itemWon">
-  <h4>{{items.name}} starting price: ${{items.startingPrice}} final Price: ${{items.finalPrice}}</h4>
-  <img src="{{items.imgUrl}}" alt="itemWon" style="width: 200px; height: 200px" />
+<div>
+  <ul>
+    <li ng-repeat="items in itemWon" class="collection">
+      <img src="{{items.imgUrl}}" alt="itemWon" style="width: 200px; height: 200px" />
+        <h3>{{items.name}}</h3>
+      <p>Starting Price: ${{items.startingPrice}}</p>
+      <p>Final Price: ${{items.finalPrice}}</p>
+    </li>
+  </ul>
 </div>
