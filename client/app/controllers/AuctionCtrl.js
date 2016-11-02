@@ -40,11 +40,11 @@ getAllItems();
         //////////and then add to users items///////////
 
         moveToWinner(bid).then(() => {
-          itemsForBid.unshift();
-          $scope.currentItem = itemsForBid[0]
-          console.log(itemsForBid);
+          itemsForBid.shift();
+          $scope.currentItem = itemsForBid[0];
+          $scope.amount = itemsForBid[0].currentPrice;
+          console.log(itemsForBid[0].currentPrice);
         })
-        // updatePrice(bid)
       } else {
       $scope.lowBid = true;
     }
