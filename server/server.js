@@ -93,16 +93,19 @@ connect()
  let users = 0;
 
  io.on('connection', function (socket) {
+   //////getting data back from client ////////
+   socket.on('bid', (bidData) => {
+     io.emit("bid", {bid: bidData})
+   })
+   socket.on('userData', (bidData) => {
+     console.log("bidData");
+   })
    ///////on connection add a user
    users++
  socket.emit("user",
  {
    userNumber: users
  });
- //////getting data back from client ////////
- socket.on('bid', (bidData) => {
-   io.emit("bid", {bid: bidData})
- })
 
  socket.on("disconnect", function() {
    users--

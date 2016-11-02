@@ -1,9 +1,7 @@
 "use strict"
 
 app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactory, UserFactory, SocketFactory) {
-//////setting defualt amount for now///////
-  $scope.bidSubmitted = false;
-  $scope.lowBid = false;
+//////setting defualt amount for now//////
   $scope.winner = false;
   $scope.winnerTime = false;
 
@@ -21,6 +19,7 @@ const getAllItems = (bid) => {
     })
     $scope.currentItem = itemsForBid[0]
     $scope.amount = itemsForBid[0].currentPrice
+    getBidData()
   })
 }
 getAllItems();
@@ -28,21 +27,15 @@ getAllItems();
   $scope.submitBid = () => {
     var bid = $scope.bid
     if (bid > $scope.amount && bid < 500){
-      // $scope.amount = bid;
-      $scope.bidSubmitted = true;
-      updatePrice(bid)
       sendData(bid)
       getBidData(bid)
-    } else if (bid >= 500) { //////setting a $500 max bid
-        // $scope.amount = bid;
+    } else if (bid >= 500) { //////setting a $500 max bid///
         $scope.winner = true;
-        //////logic to remove from db///////
-        //////////and then add to users items///////////
+///////////////logic to remove from db and then add to users items///////////
         moveToWinner(bid).then(() => {
           itemsForBid.shift();
           $scope.amount = itemsForBid[0].currentPrice;
           $scope.currentItem = itemsForBid[0];
-          $scope.bidSubmitted = false;
         })
       } else {
         $scope.lowBid = true;
@@ -78,7 +71,7 @@ const moveToWinner = (bid) => {
   })
 }
 
-////////////////////////////
+////////////socket logic///////////////
 SocketFactory.on('user', function (data) {
   $scope.number = data.userNumber;
 });
@@ -89,8 +82,13 @@ const sendData = (bid) => {
 
 const getBidData = (bid) => {
   SocketFactory.on("bid", (data) => {
-    $scope.amount = data
+    $scope.amount = data.bid
+    updatePrice(bid) /////update the database
   })
+}
+
+const getUserSocket = (user) => {
+  SocketFactory.emit("userData", user)
 }
 SocketFactory.on('timer', function (data, bid) {
   if (data.countdown > 0) {
