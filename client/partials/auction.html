@@ -1,22 +1,35 @@
-<h3>number of users online: {{number}}</h3>
-<h3>Time Remaining: {{time}}</h3>
-<!-- image  -->
-<img src="{{currentItem.imgUrl}}" style="width: 500px; height: 500px">
-<h2>This is the auction page</h2>
-<h3>*Note: all items have a $500 maximum</h3>
+<div class="container">
+  <div class="mainImage">
+    <img src="{{currentItem.imgUrl}}" style="width: 500px; height: 500px">
+  </div>
+  <div class="mainInfo">
+    <h2>{{currentItem.name}}</h2>
+    <div class="salesDiv">
+      <h5>Starting Price: ${{currentItem.startingPrice}}</h5>
+      <h3 id="currency-default" ng-show="!bidSubmitted">Current Price: ${{amount}}</h3>
+      <h3 ng-show="bidSubmitted">Current Price: ${{currentBid.bid}}</h3>
+      <h3>Time Remaining: {{time}}</h3>
+      <h6>*Note: all items have a $500 maximum</h6>
+      <h3>number of users online: {{number}}</h3>
+    </div>
+    <div class="bidInput">
+      <h4>Enter Bid Below:</h4>
+      <input type="number" class="bid" name="bid" placeholder="enter new bid" ng-model="bid">
+    </div>
+      <input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)" class="btn bidBtn waves-effect waves-light">
+  </div>
+</div>
+
+
 
 <!-- getting data from controller -->
-<h2>{{currentItem.name}}:  Starting Price: ${{currentItem.startingPrice}}</h2>
+
 
 
 
 
 
 <!-- input items -->
-<input type="number" name="bid" placeholder="enter new bid" ng-model="bid">
-<h3 id="currency-default" ng-show="!bidSubmitted">Current Price: ${{amount}}</h3>
-<h3 ng-show="bidSubmitted">Current Price: ${{currentBid.bid}}</h3>
-<input type="button" name="bid" value="Submit Bid" ng-click="submitBid(bid)">
 <!-- show/hide routes -->
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>
 <h2 ng-show="lowBid">Bid must be more than current price</h2>
