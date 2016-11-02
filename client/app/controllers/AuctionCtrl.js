@@ -38,18 +38,18 @@ getAllItems();
         $scope.winner = true;
         //////logic to remove from db///////
         //////////and then add to users items///////////
-
         moveToWinner(bid).then(() => {
           itemsForBid.shift();
-          $scope.currentItem = itemsForBid[0];
           $scope.amount = itemsForBid[0].currentPrice;
-          console.log(itemsForBid[0].currentPrice);
+          $scope.currentItem = itemsForBid[0];
+          $scope.bidSubmitted = false;
         })
       } else {
-      $scope.lowBid = true;
+        $scope.lowBid = true;
+      }
+      $scope.bid = "";
     }
-    $scope.bid = "";
-}
+
 
 
 ///////update the price of the item in database///////////
@@ -89,7 +89,7 @@ const sendData = (bid) => {
 
 const getBidData = (bid) => {
   SocketFactory.on("bid", (data) => {
-    $scope.currentBid = data
+    $scope.amount = data
   })
 }
 SocketFactory.on('timer', function (data, bid) {
