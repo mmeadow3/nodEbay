@@ -7,31 +7,26 @@ app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactor
   $scope.winner = false;
   $scope.winnerTime = false;
 
-///////will randomly get an item from the database////////
-const itemForBid = [];
+///////will get an item from the database////////
+const itemsForBid = [];
 const getAllItems = (bid) => {
-  AuctionFactory.getItems()
-  .then(item => {
-    item.forEach(function(property) {
+  return AuctionFactory.getItems()
+  .then(items => {
+    items.forEach(function(item) {
       //////////will remove items set to "Not available"/////////
-      if (property.available === true) {
-        itemForBid.push({
-          startingPrice: (property.startingPrice),
-          currentPrice: (property.currentPrice),
-          _id: (property._id),
-          available: (property.available),
-          imgUrl: (property.imgUrl),
-          name: (property.name)
-        })
-        $scope.currentItem = itemForBid[0]
-        $scope.amount = itemForBid[0].currentPrice
+      if (item.available === true) {
+        itemsForBid.push(item)
+        items.filter((item => item.available))
       }
     })
+    $scope.currentItem = itemsForBid[0]
+    $scope.amount = itemsForBid[0].currentPrice
   })
 }
 getAllItems();
 /////////////bidding logic ///////////////////////
-  $scope.submitBid = (bid) => {
+  $scope.submitBid = () => {
+    var bid = $scope.bid
     if (bid > $scope.amount && bid < 500){
       // $scope.amount = bid;
       $scope.bidSubmitted = true;
@@ -43,10 +38,14 @@ getAllItems();
         $scope.winner = true;
         //////logic to remove from db///////
         //////////and then add to users items///////////
-        moveToWinner(bid);
-        updatePrice(bid)
-        console.log(itemForBid[0]);
-    } else {
+
+        moveToWinner(bid).then(() => {
+          itemsForBid.unshift();
+          $scope.currentItem = itemsForBid[0]
+          console.log(itemsForBid);
+        })
+        // updatePrice(bid)
+      } else {
       $scope.lowBid = true;
     }
     $scope.bid = "";
@@ -64,19 +63,17 @@ let currentUser = [];
 const moveToWinner = (bid) => {
   //////////first assign the winning price to the item////////
   ////////then get user from Factory///////////////
-  itemForBid[0].finalPrice = bid
-  UserFactory.getCurrentUser()
+  itemsForBid[0].finalPrice = bid
+  return UserFactory.getCurrentUser()
   .then(user => {
     $scope.user = user.username
     ///////get item._id for item being bid on////////
-      itemForBid.forEach((nameAndPrice) => {
         $http
-          .put(`/api/users/${user._id}`, {itemsWon: nameAndPrice})
+          .put(`/api/users/${user._id}`, {itemsWon: itemsForBid[0]})
           .catch(console.error)
-    })
     // update the final price to see what the user paid
     $http
-      .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, available: false})
+      .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, currentPrice: bid, available: false})
       .catch(console.error)
   })
 }
@@ -102,7 +99,6 @@ SocketFactory.on('timer', function (data, bid) {
         $scope.time = "Item has ended"
         $scope.amount = bid;
         $scope.winnerTime = true;
-        updatePrice(bid)
         moveToWinner(bid);
       }
     });
