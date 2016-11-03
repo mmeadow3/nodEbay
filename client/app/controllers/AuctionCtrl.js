@@ -61,12 +61,14 @@ const updatePrice = (bid) => {
 let currentUser = [];
 const moveToWinner = (bid) => {
   console.log("bid", bid);
+  itemsForBid[0].finalPrice = bid
   //////////first assign the winning price to the item////////
   ////////then get user from Factory///////////////
   return UserFactory.getCurrentUser()
   .then(user => {
-    console.log("inside stuff", itemsForBid[0]);
+    // console.log("inside stuff", itemsForBid[0]);
     $scope.user = user.username
+    console.log(itemsForBid[0]);
     ///////get item._id for item being bid on////////
         $http
           .put(`/api/users/${user._id}`, {itemsWon: itemsForBid[0]})

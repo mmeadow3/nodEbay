@@ -103,3 +103,14 @@ li:hover {
 input[type="number"]{
   font-size: 20px;
 }
+
+
+@media screen and (min-width:600px ) and (max-width:800px) {
+html {
+    color: red;
+}
+
+
+
+/*end media query*/
+}
