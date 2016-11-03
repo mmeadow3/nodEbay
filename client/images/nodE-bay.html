@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://protected-reef-31580.herokuapp.com/login -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://protected-reef-31580.herokuapp.com/images/1478051254.ico">
+      <title>nodE-bay</title>
+    <link rel="stylesheet" type="text/css" href="./nodE-bay_files/materialize.min.css">
+    <link href="./nodE-bay_files/icon" rel="stylesheet">
+    <link rel="stylesheet" href="./nodE-bay_files/animate.min.css">
+    <link rel="stylesheet" href="./nodE-bay_files/main.css">
+</head>
+<body style="">
+
+<div ng-app="nodeBay" class="ng-scope">
+		<!-- ngInclude: 'partials/navbar.html' --><div ng-include="&#39;partials/navbar.html&#39;" class="ng-scope"><nav ng-controller="NavCtrl" class="ng-scope">
+  <div class="nav-wrapper">
+    <ul class="left hide-on-med-and-down">
+      <li><a href="https://protected-reef-31580.herokuapp.com/auction" ng-hide="UserSignedIn">Current Auction</a></li>
+      <li><a href="https://protected-reef-31580.herokuapp.com/userPage" ng-hide="UserSignedIn">User Page</a></li>
+      <li><a href="https://protected-reef-31580.herokuapp.com/allItems" ng-hide="UserSignedIn">All Items</a></li>
+      <li><a href="https://protected-reef-31580.herokuapp.com/logout" ng-hide="UserSignedIn">Logout</a></li>
+      <li><a href="https://protected-reef-31580.herokuapp.com/login" ng-hide="noUserSignedIn">Login</a></li>
+      <li><a href="https://protected-reef-31580.herokuapp.com/register" ng-hide="noUserSignedIn">Register</a></li>
+    </ul>
+    <img src="./nodE-bay_files/money.png" style="width; 60px; height: 60px;">
+  </div>
+</nav>
+
+
+<!-- <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#test1">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+        <li class="tab"><a href="#test4">Test 4</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="test1" class="col s12">Test 1</div>
+  <div id="test2" class="col s12">Test 2</div>
+  <div id="test3" class="col s12">Test 3</div>
+  <div id="test4" class="col s12">Test 4</div> -->
+</div>
+		<!-- ngView: --><div ng-view="" class="ng-scope"><div class="container ng-scope">
+	<div>
+		<div class="row">
+			<h4 ng-hide="failedLogin" class="center-align red-text ng-hide">Incorrect login attempt, please try again.</h4>
+			<h1 class="center-align">Login Here</h1>
+		</div>
+		<div class="row">
+		  <div class="input-field col s12">
+		    <input id="username" type="text" ng-model="username" class="ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+		    <label for="username" class="active">Username</label>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="input-field col s12">
+		    <input id="password" type="password" class="validate ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse valid" ng-model="password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+		    <label for="password" class="active">Password</label>
+		  </div>
+		</div>
+		<div class="row">
+			<a class="waves-effect waves-light btn" ng-click="login()">Submit</a>
+		</div>
+	</div>
+</div>
+</div>
+	</div>
+
+
+
+    <script src="./nodE-bay_files/angular.min.js"></script>
+    <script src="./nodE-bay_files/jquery.min.js"></script>
+    <script src="./nodE-bay_files/materialize.min.js"></script>
+    <script src="./nodE-bay_files/angular-route.min.js"></script>
+    <script src="./nodE-bay_files/socket.io.js"></script>
+    <!-- main js script -->
+    <script src="./nodE-bay_files/main.js"></script>
+    <!-- factories  -->
+    <script src="./nodE-bay_files/ItemFactory.js"></script>
+    <script src="./nodE-bay_files/UserFactory.js"></script>
+    <script src="./nodE-bay_files/AuctionFactory.js"></script>
+    <script src="./nodE-bay_files/SocketFactory.js"></script>
+    <!-- controllers -->
+    <script src="./nodE-bay_files/AuctionCtrl.js"></script>
+    <script src="./nodE-bay_files/UserPage.js"></script>
+    <script src="./nodE-bay_files/NavCtrl.js"></script>
+    <script src="./nodE-bay_files/RegisterCtrl.js"></script>
+    <script src="./nodE-bay_files/LoginCtrl.js"></script>
+    <script src="./nodE-bay_files/LogoutCtrl.js"></script>
+    <script src="./nodE-bay_files/AllItemsCtrl.js"></script>
+
+
+
+<div class="hiddendiv common"></div><div id="__lpform_password" style="max-height: 16px; vertical-align: top; position: absolute; top: 356.844px; left: 1361px; z-index: 13;"><img id="__lpform_password_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARNJREFUOBGlU72ORWAQPYREq9CtRryBQqJSaGziATyB1/AaV3c7ryAegUZHfxM1hUTiZ82EXbvVcicx35yZOWe+nxDiOP4E8FjX9WNb/22CILy25kjc3GUyTdkHPsSrk4l8GHFpB2/ZbQFVVXnwbQHXdX8EJEkCJRzHwXa7XLAsC57nQVEUxoZhwPd9aJrG+HASBbZtswDFXdeh73sEQUAQsiwjz3OEYcixrutIkoRr5PgI0zR9Jyj+i7fbxjzP3HOuUYJ3UBQFlmXBOI5omoYb0zQFXVRZlkx+Pp8wTRNVVXH9cCxAZBI5W13XZ4i2bfn7ldzA7VfIsoy1bgsMw/CewHEUcf+rDnxpJS4dIbojsnOiL0hfafwTOClcAAAAAElFTkSuQmCC" style="opacity: 0.6; vertical-align: top;"></div><div id="__lpform_username" style="max-height: 16px; vertical-align: top; position: absolute; top: 247.844px; left: 1361px; z-index: 13;"><img id="__lpform_username_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARNJREFUOBGlU72ORWAQPYREq9CtRryBQqJSaGziATyB1/AaV3c7ryAegUZHfxM1hUTiZ82EXbvVcicx35yZOWe+nxDiOP4E8FjX9WNb/22CILy25kjc3GUyTdkHPsSrk4l8GHFpB2/ZbQFVVXnwbQHXdX8EJEkCJRzHwXa7XLAsC57nQVEUxoZhwPd9aJrG+HASBbZtswDFXdeh73sEQUAQsiwjz3OEYcixrutIkoRr5PgI0zR9Jyj+i7fbxjzP3HOuUYJ3UBQFlmXBOI5omoYb0zQFXVRZlkx+Pp8wTRNVVXH9cCxAZBI5W13XZ4i2bfn7ldzA7VfIsoy1bgsMw/CewHEUcf+rDnxpJS4dIbojsnOiL0hfafwTOClcAAAAAElFTkSuQmCC" style="opacity: 0.6; vertical-align: top;"></div></body></html>
