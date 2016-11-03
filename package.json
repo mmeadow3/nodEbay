@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A websocket nodeJS bidding app for NSS MEAN stack Capstone",
   "main": "server.js",
+  "engines": {
+    "node": "6"
+  },
   "scripts": {
     "db:seed": "node server/db/seed.js",
     "start": "node server/server.js",
@@ -39,5 +42,8 @@
     "node-base64-image": "^1.0.1",
     "npm": "^3.10.8",
     "socket.io": "^1.5.1"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9"
   }
 }
