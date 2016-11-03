@@ -3,12 +3,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {red} = require('chalk');
-const session = require('express-session')
-const RedisStore = require('connect-redis')(session)
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
+const fs = require('fs');
+const AWS = require('aws-sdk');
+const request = require('request');
+const { Server } = require('http');
+const socketio = require('socket.io');
 const app = express();
+const server = Server(app)
+const io = socketio(server);
+
+AWS.config.loadFromPath('server/config.json');
 ////////////may add passport here later for other forms of Auth////////////
 
 const port = process.env.PORT || 3000
@@ -16,8 +25,11 @@ app.set('port', port)
 
 ////////middlewares///////////
 ////////////these are serving files to the client side////////////
-app.use(express.static('../client'))
+
+
+app.use(express.static('client'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
+
 
 /////////redis connection//////////
 app.use(session({
@@ -33,16 +45,14 @@ app.use(bodyParser.json());
 
 
 app.use(routes);
+//////////404 path/////////////////////
+app.use('/api', (req, res) => {
+  res.status(404).send({message: 'Not found'});
+});
 
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname + '/client/index.html').replace("server/", ""))
+    res.sendFile(process.cwd() + '/client/index.html')
 });
-///////////////////////////////////////
-app.use((req, res, next) => {
-  console.log("Request made to:", req.url);  ////every request will make this fire
-  next() /////this will make the process continue
-})
-
 
 // Error handling middleware
 app.use((
@@ -68,13 +78,41 @@ app.use((
     console.error(err.stack)
   }
 )
+
 //////////////////////////
-
-
 connect()
   .then(() => {
-    app.listen(port, () =>
+    server.listen(port, () =>
       console.log(`Listening on port: ${port}`)
     )
   })
   .catch(console.error)
+
+
+//////socket logic/////////////
+ let users = 0;
+ io.on('connection', function (socket) {
+   //////getting data back from client ////////
+   socket.on('bid', (bidData) => {
+     io.emit("bid", {bid: bidData})
+   })
+   ///////on connection add a user
+   users++
+   setInterval(() => io.emit('user',
+    {
+      userNumber: users
+    }, 1000));
+
+ socket.on("disconnect", function() {
+   users--
+ })
+});
+
+
+
+//////time logic from Rob Dodson /////https://robdodson.me////////
+// var countdown = 30;
+//   setInterval(function() {
+//     countdown--;
+//     io.emit('timer', { countdown: countdown });
+//   }, 1000);

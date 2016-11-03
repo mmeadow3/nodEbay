@@ -19,5 +19,11 @@ module.exports = mongoose.model('user', {
   password: {
     type: String,
     required: true,
+  },
+  itemsWon: {
+    name: {type: String},
+    startingPrice: {type: Number},
+    finalPrice:{ type: Number  },
+    imgUrl: {type: String }
   }
 })

@@ -8,12 +8,20 @@ module.exports = mongoose.model('item', {
     lowercase: true,
     index: { unique: true }
   },
-  price: {
+  startingPrice: {
     type: Number,
     required: true
   },
+  currentPrice: {
+    type: Number
+  },
+  finalPrice: Number,
   available: {
     type: Boolean,
     default: true
+  },
+  imgUrl: {
+    data: Buffer,
+    type: String
   }
 })

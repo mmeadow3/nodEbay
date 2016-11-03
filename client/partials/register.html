@@ -1,0 +1,27 @@
+<div class="container">
+  Welcome to NodeBay, a bidding app. Please register for a profile
+  <div class="row">
+    <h1 class="center-align">Register Here</h1>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="username" type="text" ng-model="username">
+      <label for="username">Username</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="email" type="email" ng-model="email" class="validate">
+      <label for="email" data-error="Invalid Email" data-success="Valid Email">Email</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="password" type="password" class="validate" ng-model="password">
+      <label for="password">Password</label>
+    </div>
+  </div>
+  <div class="row">
+    <a class="waves-effect waves-light btn" ng-click="register()">Submit</a>
+  </div>
+</div>

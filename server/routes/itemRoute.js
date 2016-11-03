@@ -4,6 +4,10 @@ const { Router } = require('express')
 const router = Router()
 const Item = require('../models/Item')
 
+///////////AWS images////////
+// const s3 = require("../s3_listbuckets")
+// s3.listObjects
+
 router.get('/api/items', (req, res, err) =>
   Item
     .find()
@@ -19,7 +23,6 @@ router.get('/api/items/:_id', (req, res, err) =>
     .catch(err)
 )
 
-
  router.post('/api/items', (req, res, err) => {
    Item
    .create(req.body)
@@ -28,10 +31,17 @@ router.get('/api/items/:_id', (req, res, err) =>
   });
 
 router.put('/api/items/:_id', (req, res, err) => {
-	Item
-	.findOneAndUpdate({ _id:req.params._id }, {$set: { name: "1234566" }})
-	.then((item) => res.json(item))
-	.catch(err)
+  if (req.body.currentPrice < 500) {
+	   Item
+	    .findOneAndUpdate({ _id:req.params._id }, {$set: { currentPrice: req.body.currentPrice}})
+	    .then((item) => res.json(item))
+	    .catch(err)
+} else if (req.body.finalPrice >= 500){
+  Item
+    .findOneAndUpdate({ _id:req.params._id }, {$set: { finalPrice: req.body.finalPrice, currentPrice: req.body.currentPrice, available: false}}, {upsert: true, new: true})
+    .then((item) => res.json(item))
+    .catch(err)
+  }
 })
 
 

@@ -1,0 +1,23 @@
+<div class="container">
+	<div>
+		<div class="row">
+			<h4 ng-hide="failedLogin" class="center-align red-text">Incorrect login attempt, please try again.</h4>
+			<h1 class="center-align">Login Here</h1>
+		</div>
+		<div class="row">
+		  <div class="input-field col s12">
+		    <input id="username" type="text" ng-model="username">
+		    <label for="username">Username</label>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="input-field col s12">
+		    <input id="password" type="password" class="validate" ng-model="password">
+		    <label for="password">Password</label>
+		  </div>
+		</div>
+		<div class="row">
+			<a class="waves-effect waves-light btn" ng-click="login()">Submit</a>
+		</div>
+	</div>
+</div>

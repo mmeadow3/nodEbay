@@ -1,2 +1,37 @@
-<h1>{{title}}</h1>
-<h2>This is the auction page</h2>
+<div class="container">
+  <div class="mainImage">
+    <img src="{{currentItem.imgUrl}}" style="width: 500px; height: 500px">
+  </div>
+  <div class="mainInfo">
+    <h2>{{currentItem.name}}</h2>
+    <div class="salesDiv">
+      <h5>Starting Price: ${{currentItem.startingPrice}}</h5>
+      <h3 id="currency-default">Current Price: ${{amount}}</h3>
+      <!-- <h3 ng-show="bidSubmitted">Current Price: ${{amount.bid}}</h3> -->
+      <h3>Time Remaining: {{time}}</h3>
+      <h6>*Note: all items have a $500 maximum</h6>
+      <h3>number of users online: {{number}}</h3>
+    </div>
+    <div class="bidInput">
+      <h4>Enter Bid Below:</h4>
+      <input type="number" class="bid" name="bid" placeholder="enter new bid" ng-model="bid">
+    </div>
+      <input type="button" name="bid" value="Submit Bid" ng-click="submitBid()" class="btn bidBtn waves-effect waves-light">
+  </div>
+</div>
+
+
+
+<!-- getting data from controller -->
+
+
+
+
+
+
+<!-- input items -->
+<!-- show/hide routes -->
+<h2 ng-show="bidSubmitted">Bid has been submitted</h2>
+<h2 ng-show="lowBid">Bid must be more than current price</h2>
+<h2 ng-show="winner">You have reached the maximum bid amount, you have won {{currentItem.name}}</h2>
+<h2 ng-show="winnerTime">Time has ended on this item, you have won {{currentItem.name}}</h2>

@@ -10,12 +10,25 @@ router.get('/api/users', (req, res, err) => {
 	.then(users => res.json(users))
 	.catch(err)
 });
+router.get('/api/users/:_id', (req, res, err) => {
+	User
+	.findById(req.params._id)
+	.then((user) => res.json( user ))
+	.catch(err)
+});
 
 
 router.post('/api/users', (req, res, err) => {
 	User
 	.create(req.body)
 	.then(users => res.json(users))
+	.catch(err)
+});
+
+router.put('/api/users/:_id', (req, res, err) => {
+	User
+	.findOneAndUpdate({ _id:req.params._id }, {$push: { itemsWon: (req.body.itemsWon)}})
+	.then((user) => res.json(user))
 	.catch(err)
 });
 
