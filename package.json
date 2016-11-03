@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server/server.js",
     "db:seed": "node server/db/seed.js",
-    "postinstall": "bower install && npm run db:seed",
+    "postinstall": "npm run db:seed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -42,8 +42,5 @@
     "node-base64-image": "^1.0.1",
     "npm": "^3.10.8",
     "socket.io": "^1.5.1"
-  },
-  "devDependencies": {
-    "bower": "^1.7.9"
   }
 }
