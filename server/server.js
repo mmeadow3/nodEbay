@@ -9,7 +9,6 @@ const path = require("path");
 const routes = require('./routes');
 const {connect} = require("./db/database");
 const fs = require('fs');
-const AWS = require('aws-sdk');
 const request = require('request');
 const { Server } = require('http');
 const socketio = require('socket.io');
@@ -17,7 +16,6 @@ const app = express();
 const server = Server(app)
 const io = socketio(server);
 
-AWS.config.loadFromPath('server/config.json');
 ////////////may add passport here later for other forms of Auth////////////
 
 const port = process.env.PORT || 3000
