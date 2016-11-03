@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "deploy": "git push heroku master",
     "db:seed": "node server/db/seed.js",
     "postinstall": "bower install && npm run db:seed",
     "test": "echo \"Error: no test specified\" && exit 1"
