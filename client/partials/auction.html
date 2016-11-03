@@ -33,5 +33,5 @@
 <!-- show/hide routes -->
 <h2 ng-show="bidSubmitted">Bid has been submitted</h2>
 <h2 ng-show="lowBid">Bid must be more than current price</h2>
-<h2 ng-show="winner">You have reached the maximum bid amount, you have won</h2>
-<h2 ng-show="winnerTime">Time has ended on this item, you have won</h2>
+<h2 ng-show="winner">You have reached the maximum bid amount, you have won {{currentItem.name}}</h2>
+<h2 ng-show="winnerTime">Time has ended on this item, you have won {{currentItem.name}}</h2>

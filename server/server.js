@@ -97,9 +97,9 @@ connect()
    socket.on('bid', (bidData) => {
      io.emit("bid", {bid: bidData})
    })
-   socket.on('userData', (bidData) => {
-     console.log("bidData");
-   })
+  //  socket.on('userData', (bidData) => {
+  //    console.log("bidData");
+  //  })
    ///////on connection add a user
    users++
  socket.emit("user",

@@ -29,14 +29,20 @@ getAllItems();
     if (bid > $scope.amount && bid < 500){
       sendData(bid)
       getBidData(bid)
+      updatePrice(bid) /////update the database
     } else if (bid >= 500) { //////setting a $500 max bid///
         $scope.winner = true;
+        sendData(bid)
+        // moveToWinner(bid)
+        // .then(() => {
+        //   itemsForBid.shift();
+        // })
 ///////////////logic to remove from db and then add to users items///////////
-        moveToWinner(bid).then(() => {
-          itemsForBid.shift();
-          $scope.amount = itemsForBid[0].currentPrice;
-          $scope.currentItem = itemsForBid[0];
-        })
+        // moveToWinner(bid).then(() => {
+        //   itemsForBid.shift();
+        //   $scope.amount = itemsForBid[0].currentPrice;
+        //   $scope.currentItem = itemsForBid[0];
+        // })
       } else {
         $scope.lowBid = true;
       }
@@ -54,11 +60,12 @@ const updatePrice = (bid) => {
 ////////// logic to move won item to user page////////
 let currentUser = [];
 const moveToWinner = (bid) => {
+  console.log("bid", bid);
   //////////first assign the winning price to the item////////
   ////////then get user from Factory///////////////
-  itemsForBid[0].finalPrice = bid
   return UserFactory.getCurrentUser()
   .then(user => {
+    console.log("inside stuff", itemsForBid[0]);
     $scope.user = user.username
     ///////get item._id for item being bid on////////
         $http
@@ -83,13 +90,20 @@ const sendData = (bid) => {
 const getBidData = (bid) => {
   SocketFactory.on("bid", (data) => {
     $scope.amount = data.bid
-    updatePrice(bid) /////update the database
+    if (data.bid > 499) {
+      moveToWinner(data.bid)
+      .then(() => {
+        itemsForBid.shift();
+      $scope.amount = itemsForBid[0].currentPrice;
+      $scope.currentItem = itemsForBid[0];
+    })
+    }
   })
 }
 
-const getUserSocket = (user) => {
-  SocketFactory.emit("userData", user)
-}
+// const getUserSocket = (user) => {
+//   SocketFactory.emit("userData", user)
+// }
 SocketFactory.on('timer', function (data, bid) {
   if (data.countdown > 0) {
     $scope.time = data.countdown;
