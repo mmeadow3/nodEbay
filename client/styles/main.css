@@ -54,20 +54,17 @@ li:hover {
 
 /*auction page*/
 .container{
-  border: 1px solid red;
   min-width: 100%;
   min-height: 100%
 }
 .mainImage{
   float:left;
-  border: 1px solid red;
-  box-shadow: 5px 5px 5px grey;
+  box-shadow: 7px 7px 7px grey;
   border-radius: 7px;
   margin-left: 50px;
   padding-top: 30px;
 }
 .mainInfo{
-  border: 1px solid red;
   border-radius: 7px;
   margin-left: 50px;
 }
@@ -104,12 +101,62 @@ input[type="number"]{
   font-size: 20px;
 }
 
-
-@media screen and (min-width:600px ) and (max-width:800px) {
-html {
-    color: red;
+/*register page*/
+.welcome{
+  text-align: center
 }
 
+
+/*media query*/
+
+@media screen and (min-width:600px ) and (max-width:900px) {
+  * {margin: 0; padding: 0;}
+
+  .mainImage{
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 7px;
+    margin-left: 50px;
+    padding-top: 30px;
+    margin-right: 500px;
+  }
+  .mainInfo{
+    border-radius: 7px;
+    margin-left: 50px;
+    text-align: center
+  }
+
+  .salesDiv{
+    border: 1px solid darkblue;
+    background-color: lightblue;
+    margin-left: 550px;
+    border-radius: 7px;
+    box-shadow: 7px 5px 5px grey;
+    margin-right: 550px;
+    width: 400px;
+    height: 300px;
+    text-align: left;
+    padding-top: 25px;
+    padding-left: 25px;
+  }
+
+  .btn{
+    margin-left: 1px;
+    margin-bottom: 1px;
+  }
+
+  .bidInput{
+    margin-left: 550px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin-right: 500px;
+  }
+  .bidBtn{
+    margin-left: 27px;
+  }
+  input[type="number"]{
+    font-size: 20px;
+  }
 
 
 /*end media query*/

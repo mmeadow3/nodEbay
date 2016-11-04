@@ -1,37 +1,128 @@
 [
     {
-      "name": "New Mac Candle",
+      "name": "1997 Apple ][ ",
       "startingPrice": 21,
-      "currentPrice": 20,
+      "currentPrice": 21,
       "finalPrice": null,
-      "imgUrl": "http://www.themaclawyer.com/wp-content/uploads/2016/07/BigMac.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/appleii.jpg"
     },
     {
-      "name": "New2 Mac Candle",
+      "name": "1984 Macintosh",
+      "startingPrice": 30,
+      "currentPrice": 30,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/originalmac.jpg"
+    },
+    {
+      "name": "1989 - Macintosh SE/30",
+      "startingPrice": 15,
+      "currentPrice": 15,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/se30webserver.jpg"
+    },
+    {
+      "name": "1991 - PowerBook 100",
+      "startingPrice": 50,
+      "currentPrice": 50,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/pb100.jpg"
+    },
+    {
+      "name": "1994 - QuickTake",
+      "startingPrice": 10,
+      "currentPrice": 10,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/quicktakesmall.jpg"
+    },
+    {
+      "name": "1995 - Power Macintosh 9500",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.themaclawyer.com/wp-content/uploads/2016/07/BigMac.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/powermac_9500.gif"
     },
     {
-      "name": "New3 Mac Candle",
+      "name": "1998 - iMac",
+      "startingPrice": 55,
+      "currentPrice": 55,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/imac.jpg"
+    },
+    {
+      "name": "2000 - Apple flat panels",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.themaclawyer.com/wp-content/uploads/2016/07/BigMac.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/apple_displays.jpg"
+    },
+    {
+      "name": "2001 - PowerBook G4",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/pb_g4.jpg"
+    },
+    {
+      "name": "2001 iPod",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/ipods.jpg"
     },
     {
       "name": "New4 Mac Candle",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.themaclawyer.com/wp-content/uploads/2016/07/BigMac.jpg"
+      "imgUrl": ""
     },
     {
-      "name": "New5 Mac Candle",
+      "name": "2006 MacBook Pro",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.themaclawyer.com/wp-content/uploads/2016/07/BigMac.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/macbook_pro.jpg"
+    },
+    {
+      "name": "1980 - Apple III",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/Apple3small.jpg"
+    },
+    {
+      "name": "1983 - Lisa",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/applelisaad.jpg"
+    },
+    {
+      "name": "1993 - MessagePad and Newton OS",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/newton2ksmall.jpg"
+    },
+    {
+      "name": "1997 - Twentieth Anniversary Mac",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/twentiethann.jpg"
+    },
+    {
+      "name": "2000 - Power Mac G4 Cube",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/Power_Macintosh_G4cube.jpg"
+    },
+    {
+      "name": "1989 - Macintosh Portable",
+      "startingPrice": 20,
+      "currentPrice": 20,
+      "finalPrice": null,
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/macportable.jpg"
     }
 ]

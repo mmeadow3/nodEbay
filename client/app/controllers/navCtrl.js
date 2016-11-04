@@ -1,6 +1,7 @@
 'use strict';
 
 app.controller('NavCtrl', function($scope, $rootScope, UserFactory) {
+
   $rootScope.noUserSignedIn = false;
   $rootScope.UserSignedIn = true;
 

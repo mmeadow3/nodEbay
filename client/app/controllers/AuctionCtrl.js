@@ -20,6 +20,7 @@ const getAllItems = (bid) => {
     $scope.currentItem = itemsForBid[0]
     $scope.amount = itemsForBid[0].currentPrice
     getBidData()
+    timerWin()
   })
 }
 getAllItems();
@@ -33,16 +34,6 @@ getAllItems();
     } else if (bid >= 500) { //////setting a $500 max bid///
         $scope.winner = true;
         sendData(bid)
-        // moveToWinner(bid)
-        // .then(() => {
-        //   itemsForBid.shift();
-        // })
-///////////////logic to remove from db and then add to users items///////////
-        // moveToWinner(bid).then(() => {
-        //   itemsForBid.shift();
-        //   $scope.amount = itemsForBid[0].currentPrice;
-        //   $scope.currentItem = itemsForBid[0];
-        // })
       } else {
         $scope.lowBid = true;
       }
@@ -59,26 +50,27 @@ const updatePrice = (bid) => {
 }
 ////////// logic to move won item to user page////////
 let currentUser = [];
-const moveToWinner = (bid) => {
-  console.log("bid", bid);
+  const moveToWinner = (bid) => {
   itemsForBid[0].finalPrice = bid
-  //////////first assign the winning price to the item////////
+  itemsForBid[0].available = false
+    //////////first assign the winning price to the item////////
   ////////then get user from Factory///////////////
-  return UserFactory.getCurrentUser()
-  .then(user => {
-    // console.log("inside stuff", itemsForBid[0]);
-    $scope.user = user.username
-    console.log(itemsForBid[0]);
+    return UserFactory.getCurrentUser()
+      .then(user => {
+        // console.log("inside stuff", itemsForBid[0]);
+        $scope.user = user.username
+        console.log(itemsForBid[0]);
     ///////get item._id for item being bid on////////
-        $http
-          .put(`/api/users/${user._id}`, {itemsWon: itemsForBid[0]})
-          .catch(console.error)
+      $http
+        .put(`/api/users/${user._id}`, {itemsWon: itemsForBid[0]})
+        .catch(console.error)
     // update the final price to see what the user paid
-    $http
-      .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, currentPrice: bid, available: false})
-      .catch(console.error)
-  })
-}
+      $http
+        .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, currentPrice: bid, available: false})
+        .catch(console.error)
+      })
+      console.log("working");
+    }
 
 ////////////socket logic///////////////
 SocketFactory.on('user', function (data) {
@@ -94,26 +86,31 @@ const getBidData = (bid) => {
     $scope.amount = data.bid
     if (data.bid > 499) {
       moveToWinner(data.bid)
-      .then(() => {
-        itemsForBid.shift();
-      $scope.amount = itemsForBid[0].currentPrice;
-      $scope.currentItem = itemsForBid[0];
+        .then(() => {
+          itemsForBid.shift();
+          $scope.amount = itemsForBid[0].currentPrice;
+          $scope.currentItem = itemsForBid[0];
+        })
+      }
     })
-    }
-  })
-}
-
-// const getUserSocket = (user) => {
-//   SocketFactory.emit("userData", user)
-// }
-SocketFactory.on('timer', function (data, bid) {
+  }
+const timerWin = (bid) => {
+SocketFactory.on('timer', function (data) {
   if (data.countdown > 0) {
     $scope.time = data.countdown;
-      } else {
-        $scope.time = "Item has ended"
-        $scope.amount = bid;
+  } else if (data.countdown === 0){
         $scope.winnerTime = true;
-        moveToWinner(bid);
-      }
-    });
+        $scope.currentItem._id = itemsForBid[0]._id
+        // itemsForBid[0].finalPrice = data.bid
+        // itemsForBid[0].available = false
+          moveToWinner(data.bid)
+          .then(() => {
+            SocketFactory.emit("time", 30)
+            itemsForBid.shift();
+            $scope.amount = itemsForBid[0].currentPrice;
+            $scope.currentItem = itemsForBid[0];
+          })
+        }
+    })
+  }
 })

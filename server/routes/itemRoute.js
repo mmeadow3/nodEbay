@@ -33,7 +33,7 @@ router.put('/api/items/:_id', (req, res, err) => {
 	    .findOneAndUpdate({ _id:req.params._id }, {$set: { currentPrice: req.body.currentPrice}})
 	    .then((item) => res.json(item))
 	    .catch(err)
-} else if (req.body.finalPrice >= 500){
+} else if (req.body.finalPrice){
   Item
     .findOneAndUpdate({ _id:req.params._id }, {$set: { finalPrice: req.body.finalPrice, currentPrice: req.body.currentPrice, available: false}}, {upsert: true, new: true})
     .then((item) => res.json(item))
