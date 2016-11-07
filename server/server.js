@@ -88,16 +88,11 @@ connect()
 
 
 //////socket logic/////////////
-// var countdown = 15;
  let users = 0;
  io.on('connection', function (socket) {
    //////getting data back from client ////////
    socket.on('bid', (bidData) => {
      io.emit("bid", {bid: bidData})
-    //  setInterval(function() {
-    //    io.emit('timer', { countdown: countdown, bid: bidData });
-    //    countdown--;
-    //  }, 1000);
      socket.on("time", (data) => {
        countdown = data;
      })
@@ -117,13 +112,13 @@ connect()
 
 
 //////time logic from Rob Dodson /////https://robdodson.me////////
-// var countdown = 60;
-//   setInterval(function() {
-//     if (countdown > 0) {
-//     countdown--;
-//   } else {
-//     countdown = 60
-//   }
-//
-//   io.emit('timer', { countdown: countdown });
-//   }, 1000);
+var countdown = 60;
+  setInterval(function() {
+    if (countdown > 0) {
+    countdown--;
+  } else {
+    countdown = 60
+  }
+
+  io.emit('timer', { countdown: countdown });
+  }, 1000);

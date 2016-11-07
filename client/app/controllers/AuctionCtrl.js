@@ -2,9 +2,7 @@
 
 app.controller("AuctionCtrl", function($scope, $http, ItemFactory, AuctionFactory, UserFactory, SocketFactory) {
 //////setting defualt amount for now//////
-  $scope.winner = false;
   $scope.winnerTime = false;
-
 ///////will get an item from the database////////
 const itemsForBid = [];
 const getAllItems = (bid) => {
@@ -28,18 +26,22 @@ getAllItems();
   $scope.submitBid = () => {
     var bid = $scope.bid
     if (bid > $scope.amount && bid < 500){
+      Materialize.toast('Your bid has been submitted!', 2000)
       sendData(bid)
-      getBidData(bid)
+      // getBidData(bid)
       updatePrice(bid) /////update the database
+        $scope.bid = "";
     } else if (bid >= 500) { //////setting a $500 max bid///
-        $scope.winner = true;
+        Materialize.toast('You have reached the maximum bid, you are the winner', 2000)
         sendData(bid)
-      } else {
-        $scope.lowBid = true;
-      }
+          $scope.bid = "";
+      } else if (bid < $scope.amount){
+      Materialize.toast('Your bid must be more than the current value!', 2000)
       $scope.bid = "";
+    } else {
+      Materialize.toast('Time has ended', 2000)
     }
-
+}
 
 
 ///////update the price of the item in database///////////
@@ -57,7 +59,6 @@ let currentUser = [];
   ////////then get user from Factory///////////////
     return UserFactory.getCurrentUser()
       .then(user => {
-        // console.log("inside stuff", itemsForBid[0]);
         $scope.user = user.username
         console.log(itemsForBid[0]);
     ///////get item._id for item being bid on////////
@@ -87,6 +88,7 @@ const getBidData = (bid) => {
     if (data.bid > 499) {
       moveToWinner(data.bid)
         .then(() => {
+          SocketFactory.emit("time", 60)
           itemsForBid.shift();
           $scope.amount = itemsForBid[0].currentPrice;
           $scope.currentItem = itemsForBid[0];
@@ -99,13 +101,10 @@ SocketFactory.on('timer', function (data) {
   if (data.countdown > 0) {
     $scope.time = data.countdown;
   } else if (data.countdown === 0){
-        $scope.winnerTime = true;
         $scope.currentItem._id = itemsForBid[0]._id
-        // itemsForBid[0].finalPrice = data.bid
-        // itemsForBid[0].available = false
           moveToWinner(data.bid)
           .then(() => {
-            SocketFactory.emit("time", 30)
+            SocketFactory.emit("time", 60)
             itemsForBid.shift();
             $scope.amount = itemsForBid[0].currentPrice;
             $scope.currentItem = itemsForBid[0];
