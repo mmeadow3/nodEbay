@@ -128,10 +128,10 @@ input[type="number"]{
   .salesDiv{
     border: 1px solid darkblue;
     background-color: lightblue;
-    margin-left: 550px;
+    margin-left: 50px !important;
     border-radius: 7px;
     box-shadow: 7px 5px 5px grey;
-    margin-right: 550px;
+    /*margin-right: 550px;*/
     width: 400px;
     height: 300px;
     text-align: left;
@@ -145,19 +145,33 @@ input[type="number"]{
   }
 
   .bidInput{
-    margin-left: 550px;
+    margin-left: 50px!important;
     width: 400px;
     border: 1px solid black;
     border-radius: 7px;
     margin-right: 500px;
   }
   .bidBtn{
-    margin-left: 27px;
+    margin-left: 19px !important;
   }
   input[type="number"]{
     font-size: 20px;
   }
 
+  //////////**styling for user page/////////////////*/
+  .userInfo{
+    text-align: center
+  }
+  .itemCollection{
+    border-radius: 7px;
+    margin-left: 50px !important;
+    box-shadow: 8px 6px 5px grey;
+  }
+ }
+  .allItems{
+    border-radius: 7px;
+  }
+  /*end user page*/
 
 /*end media query*/
 }
