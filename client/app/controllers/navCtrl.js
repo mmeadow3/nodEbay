@@ -22,5 +22,4 @@ app.controller('NavCtrl', function($scope, $rootScope, UserFactory) {
         $rootScope.hideUserNavLinks();
       }
     })
-
 })
