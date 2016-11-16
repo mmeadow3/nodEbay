@@ -5,8 +5,8 @@
       <li><a href="/userPage" ng-show="noUserSignedIn">User Page</a></li>
       <li><a href="/allItems" ng-show="noUserSignedIn">All Items</a></li>
       <li><a href="/logout" ng-show="noUserSignedIn">Logout</a></li>
-      <li><a href="/login" ng-show="UserSignedIn">Login</a></li>
-      <li><a href="/register" ng-show="UserSignedIn">Register</a></li>
+      <li><a href="/login" ng-hide="noUserSignedIn">Login</a></li>
+      <li><a href="/register" ng-hide="noUserSignedIn">Register</a></li>
     </ul>
     <img class="hide-on-med-and-down" src="images/money.png" style="width; 60px; height: 60px;"/>
   </div>
