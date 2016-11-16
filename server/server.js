@@ -112,13 +112,13 @@ connect()
 
 
 //////time logic from Rob Dodson /////https://robdodson.me////////
-// var countdown = 60;
-//   setInterval(function() {
-//     if (countdown > 0) {
-//     countdown--;
-//   } else {
-//     countdown = 60
-//   }
-//
-//   io.emit('timer', { countdown: countdown });
-//   }, 1000);
+var countdown = 60;
+  setInterval(function() {
+    if (countdown > 0) {
+    countdown--;
+  } else {
+    countdown = 60
+  }
+
+  io.emit('timer', { countdown: countdown });
+  }, 1000);
