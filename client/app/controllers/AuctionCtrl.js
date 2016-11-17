@@ -60,6 +60,7 @@ let currentUser = [];
     return UserFactory.getCurrentUser()
       .then(user => {
         $scope.user = user.username
+        console.log(user.username);
         console.log(itemsForBid[0]);
     ///////get item._id for item being bid on////////
       $http
@@ -67,7 +68,7 @@ let currentUser = [];
         .catch(console.error)
     // update the final price to see what the user paid
       $http
-        .put(`/api/items/${$scope.currentItem._id}`, {finalPrice: bid, currentPrice: bid, available: false})
+        .put(`/api/items/${$scope.currentItem._id}`, {winner: user.username,finalPrice: bid, currentPrice: bid, available: false})
         .catch(console.error)
       })
       console.log("working");

@@ -4,125 +4,135 @@
       "startingPrice": 21,
       "currentPrice": 21,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/appleii.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/appleii.jpg",
+      "winner": null
     },
     {
       "name": "1984 Macintosh",
       "startingPrice": 30,
       "currentPrice": 30,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/originalmac.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/originalmac.jpg",
+      "winner": null
     },
     {
       "name": "1989 - Macintosh SE/30",
       "startingPrice": 15,
       "currentPrice": 15,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/se30webserver.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/se30webserver.jpg",
+      "winner": null
     },
     {
       "name": "1991 - PowerBook 100",
       "startingPrice": 50,
       "currentPrice": 50,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/pb100.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/pb100.jpg",
+      "winner": null
     },
     {
       "name": "1994 - QuickTake",
       "startingPrice": 10,
       "currentPrice": 10,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/quicktakesmall.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/quicktakesmall.jpg",
+      "winner": null
     },
     {
       "name": "1995 - Power Macintosh 9500",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/powermac_9500.gif"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/powermac_9500.gif",
+      "winner": null
     },
     {
       "name": "1998 - iMac",
       "startingPrice": 55,
       "currentPrice": 55,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/imac.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/imac.jpg",
+      "winner": null
     },
     {
       "name": "2000 - Apple flat panels",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/apple_displays.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/apple_displays.jpg",
+      "winner": null
     },
     {
       "name": "2001 - PowerBook G4",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/pb_g4.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/pb_g4.jpg",
+      "winner": null
     },
     {
       "name": "2001 iPod",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/ipods.jpg"
-    },
-    {
-      "name": "New4 Mac Candle",
-      "startingPrice": 20,
-      "currentPrice": 20,
-      "finalPrice": null,
-      "imgUrl": ""
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/ipods.jpg",
+      "winner": null
     },
     {
       "name": "2006 MacBook Pro",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/macbook_pro.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/macbook_pro.jpg",
+      "winner": null
     },
     {
       "name": "1980 - Apple III",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/Apple3small.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/Apple3small.jpg",
+      "winner": null
     },
     {
       "name": "1983 - Lisa",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/applelisaad.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/applelisaad.jpg",
+      "winner": null
     },
     {
       "name": "1993 - MessagePad and Newton OS",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/newton2ksmall.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/newton2ksmall.jpg",
+      "winner": null
     },
     {
       "name": "1997 - Twentieth Anniversary Mac",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/twentiethann.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/twentiethann.jpg",
+      "winner": null
     },
     {
       "name": "2000 - Power Mac G4 Cube",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/Power_Macintosh_G4cube.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/04/Power_Macintosh_G4cube.jpg",
+      "winner": null
     },
     {
       "name": "1989 - Macintosh Portable",
       "startingPrice": 20,
       "currentPrice": 20,
       "finalPrice": null,
-      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/macportable.jpg"
+      "imgUrl": "http://www.blogcdn.com/www.engadget.com/media/2006/03/macportable.jpg",
+      "winner": null
     }
 ]

@@ -23,5 +23,8 @@ module.exports = mongoose.model('item', {
   imgUrl: {
     data: Buffer,
     type: String
+  },
+  winner: {
+    type: String
   }
 })
