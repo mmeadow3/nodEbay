@@ -4,9 +4,9 @@ const app = angular
 	.module('nodeBay', ['ngRoute'])
 	.config(($routeProvider, $locationProvider) => {
 		$routeProvider
-		.when('#/', {
-			templateUrl: 'partials/navbar.html',
-			controller: 'NavCtrl'
+		.when('/*', {
+			controller: 'NavCtrl',
+			templateUrl: 'partials/navbar.html'
 		})
 		.when('/register', {
 			controller: 'RegisterCtrl',
