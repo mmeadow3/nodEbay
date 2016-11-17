@@ -26,7 +26,6 @@ app.set('port', port)
 
 
 app.use(express.static('client'))
-app.use('/js', express.static('client/app/controllers/NavCtrl'))
 app.use('/node_modules', express.static(__dirname + '/../node_modules'));
 
 

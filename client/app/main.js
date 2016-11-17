@@ -4,7 +4,7 @@ const app = angular
 	.module('nodeBay', ['ngRoute'])
 	.config(($routeProvider, $locationProvider) => {
 		$routeProvider
-		.when('/*', {
+		.when('#/', {
 			controller: 'NavCtrl',
 			templateUrl: 'partials/navbar.html'
 		})
