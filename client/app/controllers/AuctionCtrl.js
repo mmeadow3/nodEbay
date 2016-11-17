@@ -34,7 +34,7 @@ getAllItems();
     } else if (bid >= 500) { //////setting a $500 max bid///
         Materialize.toast('You have reached the maximum bid, you are the winner', 2000)
         sendData(bid)
-          $scope.bid = "";
+        $scope.bid = "";
       } else if (bid < $scope.amount){
       Materialize.toast('Your bid must be more than the current value!', 2000)
       $scope.bid = "";
@@ -51,7 +51,6 @@ const updatePrice = (bid) => {
       .catch(console.error)
 }
 ////////// logic to move won item to user page////////
-let currentUser = [];
   const moveToWinner = (bid) => {
   itemsForBid[0].finalPrice = bid
   itemsForBid[0].available = false
@@ -60,15 +59,14 @@ let currentUser = [];
     return UserFactory.getCurrentUser()
       .then(user => {
         $scope.user = user.username
-        console.log(user.username);
-        console.log(itemsForBid[0]);
+        itemsForBid[0].winner = user.username
     ///////get item._id for item being bid on////////
       $http
         .put(`/api/users/${user._id}`, {itemsWon: itemsForBid[0]})
         .catch(console.error)
     // update the final price to see what the user paid
       $http
-        .put(`/api/items/${$scope.currentItem._id}`, {winner: user.username,finalPrice: bid, currentPrice: bid, available: false})
+        .put(`/api/items/${$scope.currentItem._id}`, {winner: user.username, finalPrice: bid, currentPrice: bid, available: false})
         .catch(console.error)
       })
       console.log("working");
@@ -89,7 +87,7 @@ const getBidData = (bid) => {
     if (data.bid > 499) {
       moveToWinner(data.bid)
         .then(() => {
-          SocketFactory.emit("time", 60)
+          SocketFactory.emit("time", 60) ////restart the timer
           itemsForBid.shift();
           $scope.amount = itemsForBid[0].currentPrice;
           $scope.currentItem = itemsForBid[0];
