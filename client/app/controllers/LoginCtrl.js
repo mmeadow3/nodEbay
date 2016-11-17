@@ -15,11 +15,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			password: $scope.password
 		}
 		///////change the ng-show and hide in nav bar///////
-		$rootScope.showUserNavLinks = () => {
-			$rootScope.noUserSignedIn = true;
-			$rootScope.UserSignedIn = false;
-		}
-		$rootScope.showUserNavLinks()
+	$rootScope.showUserNavLinks();
 		///////////////
 		//Call to server for user verification
 		UserFactory.login(user)
