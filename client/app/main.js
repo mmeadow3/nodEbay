@@ -4,10 +4,6 @@ const app = angular
 	.module('nodeBay', ['ngRoute'])
 	.config(($routeProvider, $locationProvider) => {
 		$routeProvider
-		.when('/*', {
-			controller: 'NavCtrl',
-			templateUrl: 'partials/navbar.html'
-		})
 		.when('/register', {
 			controller: 'RegisterCtrl',
 			templateUrl: 'partials/register.html'
@@ -31,6 +27,10 @@ const app = angular
 		.when('/logout', {
 					controller: 'LogoutCtrl',
 					templateUrl: 'partials/logout.html'
+		})
+		.when('/*', {
+				controller: 'NavCtrl',
+				templateUrl: 'partials/navbar.html'
 		})
 		.otherwise('/register')
 
