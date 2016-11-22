@@ -58,7 +58,7 @@ const updatePrice = (bid) => {
   ////////then get user from Factory///////////////
     return UserFactory.getCurrentUser()
       .then(user => {
-        $scope.user = user.username
+        // $scope.user = user.username
         itemsForBid[0].winner = user.username
     ///////get item._id for item being bid on////////
       $http
