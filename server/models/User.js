@@ -24,6 +24,7 @@ module.exports = mongoose.model('user', {
     name: {type: String},
     startingPrice: {type: Number},
     finalPrice:{ type: Number  },
-    imgUrl: {type: String }
+    imgUrl: {type: String },
+    winner: {type: String}
   }
 })

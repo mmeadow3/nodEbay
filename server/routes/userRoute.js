@@ -32,9 +32,4 @@ router.put('/api/users/:_id', (req, res, err) => {
 	.catch(err)
 });
 
-///////no need to update user info (yet)/////////////
-
-///////no need to delete user info (yet)/////////////
-
-
 module.exports = router

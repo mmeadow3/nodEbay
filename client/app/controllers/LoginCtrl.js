@@ -5,6 +5,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 	//Message to show for failed login
 	$scope.failedLogin = true;
 	/////////////////////////////////////////
+	$scope.wantedUser = "1111"
 
 
 	/////////////////////////////////////////
